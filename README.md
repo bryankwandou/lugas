@@ -1,5 +1,6 @@
 # Lugas
-nLive guide: https://lugas.vercel.app
+
+Live guide: https://lugas.vercel.app
 
 A writing skill for Claude (and other LLMs) that rewrites or drafts text so it reads
 clearly and naturally, the first time. Indonesian first, English second.
