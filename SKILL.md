@@ -24,7 +24,7 @@ Answer four questions silently. If the user already answered them, do not ask ag
 
 | Question | Why it matters |
 |---|---|
-| Language? (id / en / mixed) | Load `references/patterns-id.md` or `references/patterns-en.md` |
+| Language? | id → `patterns-id.md` · en → `patterns-en.md` · anything else → `patterns-universal.md`. Always write in the target language directly. |
 | Genre? | Load the matching section of `references/genres.md` |
 | Reader? (dosen, investor, customer, developer, general public) | Sets vocabulary and formality |
 | Mode? **rewrite** existing text or **draft** new text | Rewrite must keep every fact; draft must not invent facts |
@@ -93,6 +93,7 @@ The point is to stop the 10-retry loop. So:
 | `references/boundaries.md` | Always, once per session |
 | `references/patterns-id.md` | Indonesian text |
 | `references/patterns-en.md` | English text |
+| `references/patterns-universal.md` | Any other language (and regional languages of Indonesia) |
 | `references/genres.md` | Always — jump to the genre section |
 | `references/checklist.md` | Step 5, always |
 | `examples/before-after-id.md` | Unsure what "good" looks like in Indonesian |

@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Lugas</title>
-<meta name="description" content="Skill menulis untuk Claude dan LLM lain: teks jelas dan natural sejak percobaan pertama.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161412'/%3E%3Cpath d='M10 7v18h13' stroke='%23e8b04a' stroke-width='3.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E">
+<meta name="description" content="A writing skill for Claude and other models: plain, specific text on the first try. Indonesian first, then English.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -57,14 +57,25 @@ code{font-family:"JetBrains Mono",monospace;font-size:.9em}
 .note{border-left:3px solid var(--accent);padding:4px 0 4px 18px;color:var(--muted)}
 footer{padding:40px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
 footer a{color:inherit}
+textarea{width:100%;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font:15px/1.6 Inter,system-ui,sans-serif;resize:vertical}
+textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
+.bar .btn{border:0;cursor:pointer;font-family:Inter}
+.bar .ghost{border:1px solid var(--line);background:none}
+.score{color:var(--muted);font-size:14px}
+.out{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:15px;line-height:1.85;white-space:pre-wrap}
+.hit{background:color-mix(in srgb,var(--del) 16%,transparent);color:var(--del);border-radius:3px;padding:0 2px}
+.why{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;white-space:normal}
+.why ul{margin:0;padding-left:18px}
+.why li{margin:3px 0}
 @media (max-width:640px){.pane{grid-template-columns:1fr}.pane div+div{border-left:0;border-top:1px solid var(--line)}nav a{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <a class="brand" href="#"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#161412"/><path d="M10 7v18h13" stroke="#e8b04a" stroke-width="3.5" fill="none" stroke-linecap="square"/></svg>Lugas</a>
-  <nav><a href="#demo" data-i="navDemo">Contoh</a><a href="#install" data-i="navInstall">Instal</a><a href="#batas" data-i="navLimits">Batasan</a><a href="https://github.com/bryankwandou/lugas">GitHub</a><button class="lang" id="lang">EN</button></nav>
+  <a class="brand" href="#"><img src="logo.svg" width="30" height="30" alt="">Lugas</a>
+  <nav><a href="#demo" data-i="navDemo">Contoh</a><a href="#check" data-i="navCheck">Check</a><a href="#install" data-i="navInstall">Instal</a><a href="#batas" data-i="navLimits">Batasan</a><a href="https://github.com/bryankwandou/lugas">GitHub</a><select class="lang" id="lang" aria-label="Language"><option value="en">English</option><option value="id">Indonesia</option><option value="es">Español</option><option value="ja">日本語</option><option value="zh">中文</option></select></nav>
 </header>
 
 <h1 data-i="h1">Tulisan yang jelas, sejak percobaan pertama.</h1>
@@ -78,6 +89,14 @@ footer a{color:inherit}
     <div class="tabs" role="tablist" id="tabs"></div>
     <div class="pane" id="pane"></div>
   </div>
+</section>
+
+<section id="check">
+  <h2 data-i="chkH">Check your own text</h2>
+  <p class="lede" data-i="chkP" style="margin-bottom:20px">Runs in your browser. Nothing is uploaded. It marks the phrases Lugas would cut first.</p>
+  <textarea id="inp" rows="7" spellcheck="false" data-i-ph="chkPh"></textarea>
+  <div class="bar"><button class="btn primary" id="run" data-i="chkRun">Check</button><button class="btn ghost" id="samp" data-i="chkSamp">Load sample</button><span class="score" id="score"></span></div>
+  <div id="out" class="out" hidden></div>
 </section>
 
 <section id="install">
@@ -100,12 +119,15 @@ footer a{color:inherit}
   <p class="note" data-i="limP">Lugas memperbaiki mutu tulisan. Ia tidak menjanjikan skor detektor AI atau Turnitin, tidak menyamarkan karya orang lain, tidak menyisipkan typo atau karakter tersembunyi, dan tidak mengarang data atau sitasi. Detektor tidak andal ke dua arah, jadi angka apa pun tidak bisa dijamin secara jujur.</p>
 </section>
 
-<footer>MIT · <a href="https://github.com/bryankwandou/lugas">github.com/bryankwandou/lugas</a></footer>
+<footer><p data-i="priv"></p>MIT · <a href="https://github.com/bryankwandou/lugas">github.com/bryankwandou/lugas</a></footer>
 </div>
 <script>
 const T={
-id:{navDemo:"Contoh",navInstall:"Instal",navLimits:"Batasan",h1:"Tulisan yang jelas, sejak percobaan pertama.",lede:"Lugas adalah skill untuk Claude dan model lain. Ia membuang basa-basi, klaim kosong, dan struktur kaku dari laporan, skripsi, copy website, dokumentasi kode, naskah video, sampai pamflet. Bahasa Indonesia lebih dulu, lalu Inggris.",ctaInstall:"Pasang dalam 1 menit",ctaSource:"Lihat kode sumber",demoH:"Sebelum dan sesudah",demoP:"Fakta dipertahankan. Yang dibuang hanya kata yang tidak membawa isi.",instH:"Instal",st2:"Claude.ai",st2p:"Unduh ZIP repo, lalu unggah di Settings → Capabilities → Skills.",st3:"GPT, Gemini, model lain",st3p:"Tempel isi SKILL.md, file pola bahasa Anda, genres.md, dan checklist.md ke system prompt. Totalnya sekitar 4.000 token.",st4:"Pakai",genH:"Dua belas jenis tulisan",limH:"Batasan",limP:"Lugas memperbaiki mutu tulisan. Ia tidak menjanjikan skor detektor AI atau Turnitin, tidak menyamarkan karya orang lain, tidak menyisipkan typo atau karakter tersembunyi, dan tidak mengarang data atau sitasi. Detektor tidak andal ke dua arah, jadi angka apa pun tidak bisa dijamin secara jujur.",before:"Sebelum",after:"Sesudah",copy:"Salin",copied:"Tersalin"},
-en:{navDemo:"Examples",navInstall:"Install",navLimits:"Limits",h1:"Clear writing, on the first try.",lede:"Lugas is a skill for Claude and other models. It strips filler, empty claims, and stiff structure from reports, theses, website copy, code docs, video scripts, and flyers. Indonesian first, then English.",ctaInstall:"Install in a minute",ctaSource:"View source",demoH:"Before and after",demoP:"Facts stay. Only words that carry nothing are removed.",instH:"Install",st2:"Claude.ai",st2p:"Download the repo ZIP and upload it under Settings → Capabilities → Skills.",st3:"GPT, Gemini, other models",st3p:"Paste SKILL.md, your language's pattern file, genres.md, and checklist.md into the system prompt. About 4,000 tokens.",st4:"Use",genH:"Twelve kinds of writing",limH:"Limits",limP:"Lugas improves writing quality. It does not promise AI-detector or Turnitin scores, disguise other people's work, insert typos or hidden characters, or invent data or citations. Detectors are unreliable in both directions, so no honest edit can guarantee a number.",before:"Before",after:"After",copy:"Copy",copied:"Copied"}};
+id:{navCheck:"Periksa",chkH:"Periksa tulisan Anda",chkP:"Berjalan di browser Anda. Tidak ada yang diunggah. Ini menandai frasa yang pertama dibuang Lugas.",chkRun:"Periksa",chkSamp:"Muat contoh",chkPh:"Tempel satu paragraf berbahasa Indonesia atau Inggris…",chkNone:"Tidak ada basa-basi baku yang ketemu. Struktur dan kekhususan tetap perlu dibaca manusia.",chkFound:"frasa basa-basi · sekitar",chkWords:"kata tanpa isi",navDemo:"Contoh",navInstall:"Instal",navLimits:"Batasan",h1:"Tulisan yang jelas, sejak percobaan pertama.",lede:"Lugas adalah skill untuk Claude dan model lain. Ia membuang basa-basi, klaim kosong, dan struktur kaku dari laporan, skripsi, copy website, dokumentasi kode, naskah video, sampai pamflet. Bahasa Indonesia lebih dulu, lalu Inggris.",ctaInstall:"Pasang dalam 1 menit",ctaSource:"Lihat kode sumber",demoH:"Sebelum dan sesudah",demoP:"Fakta dipertahankan. Yang dibuang hanya kata yang tidak membawa isi.",instH:"Instal",st2:"Claude.ai",st2p:"Unduh ZIP repo, lalu unggah di Settings → Capabilities → Skills.",st3:"GPT, Gemini, model lain",st3p:"Tempel isi SKILL.md, file pola bahasa Anda, genres.md, dan checklist.md ke system prompt. Totalnya sekitar 4.000 token.",st4:"Pakai",genH:"Dua belas jenis tulisan",limH:"Batasan",vidH:"Video panduan",limP:"Lugas memperbaiki mutu tulisan. Ia tidak menjanjikan skor detektor AI atau Turnitin, tidak menyamarkan karya orang lain, tidak menyisipkan typo atau karakter tersembunyi, dan tidak mengarang data atau sitasi. Detektor tidak andal ke dua arah, jadi angka apa pun tidak bisa dijamin secara jujur.",before:"Sebelum",after:"Sesudah",copy:"Salin",copied:"Tersalin",priv:"Tanpa cookie dan pelacakan. Pilihan bahasa hanya disimpan di browser Anda."},
+en:{navCheck:"Check",chkH:"Check your own text",chkP:"Runs in your browser. Nothing is uploaded. It marks the phrases Lugas would cut first.",chkRun:"Check",chkSamp:"Load sample",chkPh:"Paste a paragraph in Indonesian or English…",chkNone:"No stock filler found. Structure and specifics still need a human read.",chkFound:"filler phrases · roughly",chkWords:"words of padding",navDemo:"Examples",navInstall:"Install",navLimits:"Limits",h1:"Clear writing, on the first try.",lede:"Lugas is a skill for Claude and other models. It strips filler, empty claims, and stiff structure from reports, theses, website copy, code docs, video scripts, and flyers. Indonesian first, then English.",ctaInstall:"Install in a minute",ctaSource:"View source",demoH:"Before and after",demoP:"Facts stay. Only words that carry nothing are removed.",instH:"Install",st2:"Claude.ai",st2p:"Download the repo ZIP and upload it under Settings → Capabilities → Skills.",st3:"GPT, Gemini, other models",st3p:"Paste SKILL.md, your language's pattern file, genres.md, and checklist.md into the system prompt. About 4,000 tokens.",st4:"Use",genH:"Twelve kinds of writing",limH:"Limits",vidH:"Walkthrough",limP:"Lugas improves writing quality. It does not promise AI-detector or Turnitin scores, disguise other people's work, insert typos or hidden characters, or invent data or citations. Detectors are unreliable in both directions, so no honest edit can guarantee a number.",before:"Before",after:"After",copy:"Copy",copied:"Copied",priv:"No cookies, no tracking. Your language choice is stored only in your browser."},
+es:{navCheck:"Revisar",chkH:"Revisa tu propio texto",chkP:"Se ejecuta en tu navegador. No se sube nada. Marca las frases que Lugas quitaría primero.",chkRun:"Revisar",chkSamp:"Cargar ejemplo",chkPh:"Pega un párrafo en indonesio o inglés…",chkNone:"No se encontró relleno típico. La estructura y los detalles aún necesitan lectura humana.",chkFound:"frases de relleno · unas",chkWords:"palabras sin contenido",navDemo:"Ejemplos",navInstall:"Instalar",navLimits:"Límites",h1:"Textos claros desde el primer intento.",lede:"Lugas es una skill para Claude y otros modelos. Quita el relleno, las afirmaciones vacías y la estructura rígida de informes, tesis, textos web, documentación de código, guiones de video y folletos. Primero indonesio, luego inglés.",ctaInstall:"Instalar en un minuto",ctaSource:"Ver código fuente",demoH:"Antes y después",demoP:"Los datos se mantienen. Solo se quitan las palabras que no aportan nada.",instH:"Instalar",st2:"Claude.ai",st2p:"Descarga el ZIP del repositorio y súbelo en Settings → Capabilities → Skills.",st3:"GPT, Gemini y otros modelos",st3p:"Pega SKILL.md, el archivo de patrones de tu idioma, genres.md y checklist.md en el prompt del sistema. Unos 4.000 tokens.",st4:"Uso",genH:"Doce tipos de texto",limH:"Límites",vidH:"Recorrido en video",limP:"Lugas mejora la calidad del texto. No promete puntuaciones de detectores de IA ni de Turnitin, no disfraza el trabajo ajeno, no inserta erratas ni caracteres ocultos y no inventa datos ni citas.",before:"Antes",after:"Después",copy:"Copiar",copied:"Copiado",priv:"Sin cookies ni rastreo. El idioma elegido se guarda solo en tu navegador."},
+ja:{navCheck:"チェック",chkH:"自分の文章をチェック",chkP:"ブラウザ内で動作し、何も送信しません。Lugas が最初に削る表現を示します。",chkRun:"チェック",chkSamp:"サンプルを読み込む",chkPh:"インドネシア語または英語の段落を貼り付けてください…",chkNone:"定番の埋め草は見つかりませんでした。構成と具体性は人の目で確認してください。",chkFound:"件の埋め草 · およそ",chkWords:"語分の水増し",navDemo:"例",navInstall:"インストール",navLimits:"制限",h1:"最初の一回で、明快な文章を。",lede:"Lugas は Claude などのモデル向けのスキルです。報告書、論文、Webコピー、コードのドキュメント、動画台本、チラシから、埋め草や中身のない主張、硬い構成を取り除きます。インドネシア語を優先し、次に英語に対応します。",ctaInstall:"1分でインストール",ctaSource:"ソースを見る",demoH:"修正前と修正後",demoP:"事実は残し、意味を持たない言葉だけを削ります。",instH:"インストール",st2:"Claude.ai",st2p:"リポジトリの ZIP をダウンロードし、Settings → Capabilities → Skills からアップロードします。",st3:"GPT、Gemini などのモデル",st3p:"SKILL.md、使用言語のパターンファイル、genres.md、checklist.md をシステムプロンプトに貼り付けます。合計約 4,000 トークンです。",st4:"使い方",genH:"12種類の文章",limH:"制限",vidH:"ウォークスルー動画",limP:"Lugas は文章の質を高めるためのものです。AI検出ツールや Turnitin のスコアは保証せず、他人の文章の偽装、誤字や隠し文字の挿入、データや引用の捏造は行いません。",before:"修正前",after:"修正後",copy:"コピー",copied:"コピー済み",priv:"Cookie もトラッキングも使いません。選んだ言語はブラウザ内にのみ保存されます。"},
+zh:{navCheck:"检查",chkH:"检查你的文本",chkP:"在你的浏览器中运行，不会上传任何内容。它会标出 Lugas 最先删除的说法。",chkRun:"检查",chkSamp:"载入示例",chkPh:"粘贴一段印尼语或英语文字…",chkNone:"没有发现套话。结构和具体程度仍需人工判断。",chkFound:"处套话 · 约",chkWords:"个字属于水分",navDemo:"示例",navInstall:"安装",navLimits:"限制",h1:"第一次就写得清楚。",lede:"Lugas 是一个适用于 Claude 及其他模型的技能。它会删去报告、论文、网站文案、代码文档、视频脚本和传单中的空话、空洞的说法和僵硬的结构。优先支持印尼语，其次是英语。",ctaInstall:"一分钟完成安装",ctaSource:"查看源代码",demoH:"修改前后对比",demoP:"事实保留不变，只删去没有信息量的词。",instH:"安装",st2:"Claude.ai",st2p:"下载仓库 ZIP，在 Settings → Capabilities → Skills 中上传。",st3:"GPT、Gemini 等模型",st3p:"把 SKILL.md、对应语言的规则文件、genres.md 和 checklist.md 粘贴到系统提示词中，共约 4,000 个 token。",st4:"使用",genH:"十二类文体",limH:"限制",vidH:"演示视频",limP:"Lugas 用于提升写作质量。它不承诺 AI 检测或 Turnitin 分数，不伪装他人作品，不插入错别字或隐藏字符，也不编造数据或引用。",before:"修改前",after:"修改后",copy:"复制",copied:"已复制",priv:"不使用 Cookie，不做追踪。所选语言只保存在你的浏览器中。"}};
 const EX=[
 ["Skripsi","<mark>Di era digital yang semakin berkembang pesat seperti sekarang ini, tidak dapat dipungkiri bahwa</mark> teknologi informasi <mark>memiliki peran yang sangat penting dalam berbagai aspek kehidupan, termasuk</mark> dalam dunia pendidikan.","Sejak 2020, sekolah di Indonesia makin bergantung pada platform belajar daring. Bukti pengaruhnya terhadap nilai siswa SMA masih terbatas [sitasi?]."],
 ["Website","<mark>Selamat datang di KasirKu! Kami hadir sebagai solusi inovatif dan komprehensif untuk</mark> membantu <mark>mengoptimalkan</mark> bisnis Anda <mark>di era digital</mark>.","<b>Stok, kasir, dan laporan harian dalam satu aplikasi.</b> Setiap transaksi langsung mengurangi stok, jadi Anda tahu barang mana yang perlu dipesan."],
@@ -113,21 +135,70 @@ const EX=[
 ["Commit","<code><mark>✨ Implemented robust and comprehensive</mark> fix for <mark>the issue where users were experiencing problems with</mark> login</code>","<code>Fix login failure when email has uppercase letters</code>"],
 ["Email","<mark>Exciting news! We're thrilled to announce a game-changing feature that will revolutionize</mark> the way you <mark>manage your workflow</mark>.","You can now assign a task to two people. It closes when either one marks it done. Live for all workspaces today."]];
 const G=[["Skripsi & jurnal","Research papers"],["Laporan","Reports"],["Proposal","Proposals"],["Copy website","Website copy"],["README & commit","Code docs"],["Naskah video","Video scripts"],["Iklan & caption","Ads & captions"],["Brosur & pamflet","Brochures & flyers"],["Email","Email"],["Slide & pidato","Slides & speeches"],["CV & bio","CVs & bios"],["Teks kebijakan","Policy text"]];
-let L="id",cur=0;
+let L="en",cur=0;
 function render(){
   document.documentElement.lang=L;
   document.querySelectorAll("[data-i]").forEach(e=>{const v=T[L][e.dataset.i];if(v)e.textContent=v});
   document.querySelectorAll(".copy").forEach(b=>b.textContent=T[L].copy);
-  document.getElementById("lang").textContent=L==="id"?"EN":"ID";
+  document.querySelectorAll("[data-i-ph]").forEach(function(e){var v=T[L][e.dataset.iPh];if(v)e.placeholder=v});
+  document.getElementById("lang").value=L;
   document.getElementById("tabs").innerHTML=EX.map((x,i)=>`<button role="tab" aria-selected="${i===cur}" data-n="${i}">${x[0]}</button>`).join("");
   const x=EX[cur];
   document.getElementById("pane").innerHTML=`<div class="before fade"><span class="lbl">${T[L].before}</span><p>${x[1]}</p></div><div class="after fade"><span class="lbl">${T[L].after}</span><p>${x[2]}</p></div>`;
   document.getElementById("genres").innerHTML=G.map(g=>`<div><b>${L==="id"?g[0]:g[1]}</b></div>`).join("");
 }
 document.getElementById("tabs").onclick=e=>{const n=e.target.dataset.n;if(n!==undefined){cur=+n;render()}};
-document.getElementById("lang").onclick=()=>{L=L==="id"?"en":"id";try{localStorage.setItem("lugas-lang",L)}catch(e){}render()};
-try{L=localStorage.getItem("lugas-lang")||L}catch(e){}
+document.getElementById("lang").onchange=e=>{L=e.target.value;try{localStorage.setItem("lugas-lang",L)}catch(e){}render()};
+try{const v=localStorage.getItem("lugas-lang");if(T[v])L=v}catch(e){}
 document.addEventListener("click",e=>{if(e.target.classList.contains("copy")){const t=e.target.parentElement.textContent.replace(e.target.textContent,"");navigator.clipboard.writeText(t.trim());e.target.textContent=T[L].copied;setTimeout(()=>e.target.textContent=T[L].copy,1400)}});
+const PAT=[
+[/\b(di\s+era\s+(digital|globalisasi|modern)[^.,;]*)/gi,"era opener"],
+[/\b(tidak\s+dapat\s+dipungkiri\s+bahwa|tak\s+dapat\s+dipungkiri)/gi,"empty concession"],
+[/\b(seiring\s+(dengan\s+)?(berkembangnya|perkembangan|kemajuan)[^.,;]*)/gi,"topic ramp"],
+[/\b(pada\s+dasarnya|pada\s+hakikatnya|dalam\s+rangka|guna\s+meningkatkan)\b/gi,"padding"],
+[/\b(sangat\s+(penting|signifikan|krusial|vital)|amat\s+penting)\b/gi,"empty intensifier"],
+[/\b(solusi\s+(inovatif|komprehensif|terbaik)|inovatif\s+dan\s+komprehensif)\b/gi,"praise word"],
+[/\b(memiliki\s+peran\s+yang\s+(sangat\s+)?penting)\b/gi,"stock claim"],
+[/\b(berbagai\s+aspek\s+kehidupan|secara\s+mendalam\s+dan\s+menyeluruh)\b/gi,"stock phrase"],
+[/\b(melakukan\s+(analisis|penelitian|pengukuran|evaluasi))\b/gi,"nominalization"],
+[/\b(mengoptimalkan|memaksimalkan)\b/gi,"vague verb"],
+[/\b(dengan\s+demikian\s+dapat\s+disimpulkan\s+bahwa|sebagai\s+penutup)\b/gi,"recap ending"],
+[/\b(in\s+(today|todays|today.s)\s+(fast[- ]paced\s+)?(digital\s+)?world)\b/gi,"era opener"],
+[/\b(it\s+is\s+(important|worth\s+noting)\s+(to\s+note\s+)?that)\b/gi,"throat-clearing"],
+[/\b(in\s+the\s+(realm|world)\s+of|when\s+it\s+comes\s+to)\b/gi,"padding"],
+[/\b(delve\s+into|dive\s+deep\s+into|unlock\s+the\s+(power|potential)|harness\s+the\s+power)\b/gi,"stock verb"],
+[/\b(seamless(ly)?|robust|comprehensive|holistic|cutting[- ]edge|state[- ]of[- ]the[- ]art|game[- ]chang\w+|revolutioniz\w+)\b/gi,"praise word"],
+[/\b(we.?re\s+(thrilled|excited)\s+to|exciting\s+news)\b/gi,"fake enthusiasm"],
+[/\b(plays?\s+a\s+(crucial|vital|key|pivotal)\s+role)\b/gi,"stock claim"],
+[/\b(studies\s+(have\s+)?shows?n?|experts\s+(say|agree)|research\s+suggests)\b/gi,"unsourced authority"],
+[/\b(furthermore|moreover|additionally),\s/gi,"connector pile-up"],
+[/\b(in\s+conclusion|to\s+sum\s+up|at\s+the\s+end\s+of\s+the\s+day)\b/gi,"recap ending"],
+[/\b(very|really|truly|extremely|incredibly)\s+(important|useful|powerful|effective)\b/gi,"empty intensifier"],
+[/[\u2600-\u27bf]|[\ud83c-\udbff][\udc00-\udfff]/g,"emoji"],
+[/!{2,}/g,"exclamation"]];
+const SAMPLE={id:"Di era digital yang semakin berkembang pesat seperti sekarang ini, tidak dapat dipungkiri bahwa teknologi informasi memiliki peran yang sangat penting dalam berbagai aspek kehidupan. Kami hadir sebagai solusi inovatif dan komprehensif untuk mengoptimalkan bisnis Anda. Dengan demikian dapat disimpulkan bahwa transformasi digital sangat penting.",en:"In today's fast-paced digital world, it is important to note that businesses must delve into cutting-edge solutions. We're thrilled to announce a game-changing platform that plays a crucial role in your workflow. Studies show that seamless integration is very important. In conclusion, the future is bright!!"};
+function esc(t){return t.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function check(){
+  var raw=document.getElementById("inp").value;
+  var out=document.getElementById("out"),sc=document.getElementById("score");
+  if(!raw.trim()){out.hidden=true;sc.textContent="";return}
+  var marks=[];
+  PAT.forEach(function(pr){var re=pr[0],label=pr[1];re.lastIndex=0;var m;while((m=re.exec(raw))){if(m[0].length)marks.push([m.index,m.index+m[0].length,label]);if(re.lastIndex===m.index)re.lastIndex++}});
+  marks.sort(function(a,b){return a[0]-b[0]||b[1]-a[1]});
+  var merged=[];for(var k=0;k<marks.length;k++){if(merged.length&&marks[k][0]<merged[merged.length-1][1])continue;merged.push(marks[k])}
+  var html="",i=0,cut=0,why=new Map();
+  merged.forEach(function(m){html+=esc(raw.slice(i,m[0]))+'<span class="hit" title="'+m[2]+'">'+esc(raw.slice(m[0],m[1]))+"</span>";i=m[1];cut+=raw.slice(m[0],m[1]).split(/\s+/).filter(Boolean).length;why.set(m[2],(why.get(m[2])||0)+1)});
+  html+=esc(raw.slice(i));
+  var total=raw.split(/\s+/).filter(Boolean).length;
+  if(!merged.length){out.innerHTML=html+'<div class="why">'+T[L].chkNone+"</div>";sc.textContent=""}
+  else{out.innerHTML=html+'<div class="why"><ul>'+Array.from(why).sort(function(a,b){return b[1]-a[1]}).map(function(e){return"<li>"+e[0]+" \u00d7 "+e[1]+"</li>"}).join("")+"</ul></div>";
+    sc.textContent=merged.length+" "+T[L].chkFound+" "+cut+" "+T[L].chkWords+" ("+Math.round(cut/Math.max(total,1)*100)+"%)"}
+  out.hidden=false;
+}
+document.getElementById("run").onclick=check;
+document.getElementById("samp").onclick=function(){document.getElementById("inp").value=SAMPLE[L==="id"?"id":"en"];check()};
+document.getElementById("inp").addEventListener("input",function(){if(!document.getElementById("out").hidden)check()});
+
 render();
 </script>
 </body>
