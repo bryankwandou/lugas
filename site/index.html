@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lugas</title>
+<meta name="description" content="Skill menulis untuk Claude dan LLM lain: teks jelas dan natural sejak percobaan pertama.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161412'/%3E%3Cpath d='M10 7v18h13' stroke='%23e8b04a' stroke-width='3.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f4;--fg:#1b1917;--muted:#6b645c;--line:#e4ded4;--card:#fff;--accent:#b5781c;--del:#b3412e;--ins:#2f6f4a;--code:#f1ece3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141210;--fg:#ece7df;--muted:#9c948a;--line:#2c2823;--card:#1c1916;--accent:#e8b04a;--del:#e0806c;--ins:#7cc49a;--code:#221e1a}}
+:root[data-theme="dark"]{--bg:#141210;--fg:#ece7df;--muted:#9c948a;--line:#2c2823;--card:#1c1916;--accent:#e8b04a;--del:#e0806c;--ins:#7cc49a;--code:#221e1a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:10px;align-items:center;font-weight:600;letter-spacing:-.01em;color:inherit;text-decoration:none}
+nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
+nav a:hover{color:var(--fg)}
+.lang{background:none;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:4px 10px;font:500 13px Inter;cursor:pointer;margin-left:20px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:600;letter-spacing:-.02em}
+h1{font-size:clamp(38px,7vw,64px);line-height:1.05;margin:72px 0 20px}
+h2{font-size:30px;margin:0 0 14px}
+.lede{font-size:19px;color:var(--muted);max-width:620px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:32px 0 64px}
+.btn{display:inline-block;padding:11px 18px;border-radius:8px;font-weight:500;text-decoration:none;font-size:15px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.primary{background:var(--fg);color:var(--bg)}
+.ghost{border:1px solid var(--line);color:var(--fg)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+.demo{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;padding:12px 16px;font:500 14px Inter;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent}
+.tabs button[aria-selected=true]{color:var(--fg);border-color:var(--accent)}
+.pane{display:grid;grid-template-columns:1fr 1fr}
+.pane div{padding:20px 22px;font-size:15px}
+.pane div+div{border-left:1px solid var(--line)}
+.lbl{font:500 11px Inter;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:block}
+.before .lbl{color:var(--del)} .after .lbl{color:var(--ins)}
+.before p{color:var(--muted)}
+mark{background:none;color:var(--del);text-decoration:line-through;text-decoration-thickness:1px}
+.fade{animation:f .35s ease}
+@keyframes f{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}}
+pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:14px 16px;overflow-x:auto;font:13.5px/1.6 "JetBrains Mono",monospace;position:relative;margin:10px 0 22px}
+.copy{position:absolute;top:8px;right:8px;background:var(--card);border:1px solid var(--line);color:var(--muted);border-radius:5px;font:12px Inter;padding:3px 8px;cursor:pointer}
+code{font-family:"JetBrains Mono",monospace;font-size:.9em}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;padding-left:44px;position:relative;margin-bottom:18px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font:500 13px Inter;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.grid div{background:var(--card);padding:16px}
+.grid b{display:block;font-weight:600;margin-bottom:2px}
+.grid span{color:var(--muted);font-size:14px}
+.note{border-left:3px solid var(--accent);padding:4px 0 4px 18px;color:var(--muted)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer a{color:inherit}
+@media (max-width:640px){.pane{grid-template-columns:1fr}.pane div+div{border-left:0;border-top:1px solid var(--line)}nav a{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#"><svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#161412"/><path d="M10 7v18h13" stroke="#e8b04a" stroke-width="3.5" fill="none" stroke-linecap="square"/></svg>Lugas</a>
+  <nav><a href="#demo" data-i="navDemo">Contoh</a><a href="#install" data-i="navInstall">Instal</a><a href="#batas" data-i="navLimits">Batasan</a><a href="https://github.com/bryankwandou/lugas">GitHub</a><button class="lang" id="lang">EN</button></nav>
+</header>
+
+<h1 data-i="h1">Tulisan yang jelas, sejak percobaan pertama.</h1>
+<p class="lede" data-i="lede">Lugas adalah skill untuk Claude dan model lain. Ia membuang basa-basi, klaim kosong, dan struktur kaku dari laporan, skripsi, copy website, dokumentasi kode, naskah video, sampai pamflet. Bahasa Indonesia lebih dulu, lalu Inggris.</p>
+<div class="cta"><a class="btn primary" href="#install" data-i="ctaInstall">Pasang dalam 1 menit</a><a class="btn ghost" href="https://github.com/bryankwandou/lugas" data-i="ctaSource">Lihat kode sumber</a></div>
+
+<section id="demo">
+  <h2 data-i="demoH">Sebelum dan sesudah</h2>
+  <p class="lede" data-i="demoP" style="margin-bottom:24px">Fakta dipertahankan. Yang dibuang hanya kata yang tidak membawa isi.</p>
+  <div class="demo">
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="pane" id="pane"></div>
+  </div>
+</section>
+
+<section id="install">
+  <h2 data-i="instH">Instal</h2>
+  <ol class="steps">
+    <li><b>Claude Code</b><pre><button class="copy">Salin</button>git clone https://github.com/bryankwandou/lugas ~/.claude/skills/lugas</pre></li>
+    <li><b data-i="st2">Claude.ai</b><p data-i="st2p">Unduh ZIP repo, lalu unggah di Settings → Capabilities → Skills.</p></li>
+    <li><b data-i="st3">GPT, Gemini, model lain</b><p data-i="st3p">Tempel isi SKILL.md, file pola bahasa Anda, genres.md, dan checklist.md ke system prompt. Totalnya sekitar 4.000 token.</p></li>
+    <li><b data-i="st4">Pakai</b><pre><button class="copy">Salin</button>/lugas rapikan paragraf ini, terlalu kaku: ...</pre></li>
+  </ol>
+</section>
+
+<section>
+  <h2 data-i="genH">Dua belas jenis tulisan</h2>
+  <div class="grid" id="genres"></div>
+</section>
+
+<section id="batas">
+  <h2 data-i="limH">Batasan</h2>
+  <p class="note" data-i="limP">Lugas memperbaiki mutu tulisan. Ia tidak menjanjikan skor detektor AI atau Turnitin, tidak menyamarkan karya orang lain, tidak menyisipkan typo atau karakter tersembunyi, dan tidak mengarang data atau sitasi. Detektor tidak andal ke dua arah, jadi angka apa pun tidak bisa dijamin secara jujur.</p>
+</section>
+
+<footer>MIT · <a href="https://github.com/bryankwandou/lugas">github.com/bryankwandou/lugas</a></footer>
+</div>
+<script>
+const T={
+id:{navDemo:"Contoh",navInstall:"Instal",navLimits:"Batasan",h1:"Tulisan yang jelas, sejak percobaan pertama.",lede:"Lugas adalah skill untuk Claude dan model lain. Ia membuang basa-basi, klaim kosong, dan struktur kaku dari laporan, skripsi, copy website, dokumentasi kode, naskah video, sampai pamflet. Bahasa Indonesia lebih dulu, lalu Inggris.",ctaInstall:"Pasang dalam 1 menit",ctaSource:"Lihat kode sumber",demoH:"Sebelum dan sesudah",demoP:"Fakta dipertahankan. Yang dibuang hanya kata yang tidak membawa isi.",instH:"Instal",st2:"Claude.ai",st2p:"Unduh ZIP repo, lalu unggah di Settings → Capabilities → Skills.",st3:"GPT, Gemini, model lain",st3p:"Tempel isi SKILL.md, file pola bahasa Anda, genres.md, dan checklist.md ke system prompt. Totalnya sekitar 4.000 token.",st4:"Pakai",genH:"Dua belas jenis tulisan",limH:"Batasan",limP:"Lugas memperbaiki mutu tulisan. Ia tidak menjanjikan skor detektor AI atau Turnitin, tidak menyamarkan karya orang lain, tidak menyisipkan typo atau karakter tersembunyi, dan tidak mengarang data atau sitasi. Detektor tidak andal ke dua arah, jadi angka apa pun tidak bisa dijamin secara jujur.",before:"Sebelum",after:"Sesudah",copy:"Salin",copied:"Tersalin"},
+en:{navDemo:"Examples",navInstall:"Install",navLimits:"Limits",h1:"Clear writing, on the first try.",lede:"Lugas is a skill for Claude and other models. It strips filler, empty claims, and stiff structure from reports, theses, website copy, code docs, video scripts, and flyers. Indonesian first, then English.",ctaInstall:"Install in a minute",ctaSource:"View source",demoH:"Before and after",demoP:"Facts stay. Only words that carry nothing are removed.",instH:"Install",st2:"Claude.ai",st2p:"Download the repo ZIP and upload it under Settings → Capabilities → Skills.",st3:"GPT, Gemini, other models",st3p:"Paste SKILL.md, your language's pattern file, genres.md, and checklist.md into the system prompt. About 4,000 tokens.",st4:"Use",genH:"Twelve kinds of writing",limH:"Limits",limP:"Lugas improves writing quality. It does not promise AI-detector or Turnitin scores, disguise other people's work, insert typos or hidden characters, or invent data or citations. Detectors are unreliable in both directions, so no honest edit can guarantee a number.",before:"Before",after:"After",copy:"Copy",copied:"Copied"}};
+const EX=[
+["Skripsi","<mark>Di era digital yang semakin berkembang pesat seperti sekarang ini, tidak dapat dipungkiri bahwa</mark> teknologi informasi <mark>memiliki peran yang sangat penting dalam berbagai aspek kehidupan, termasuk</mark> dalam dunia pendidikan.","Sejak 2020, sekolah di Indonesia makin bergantung pada platform belajar daring. Bukti pengaruhnya terhadap nilai siswa SMA masih terbatas [sitasi?]."],
+["Website","<mark>Selamat datang di KasirKu! Kami hadir sebagai solusi inovatif dan komprehensif untuk</mark> membantu <mark>mengoptimalkan</mark> bisnis Anda <mark>di era digital</mark>.","<b>Stok, kasir, dan laporan harian dalam satu aplikasi.</b> Setiap transaksi langsung mengurangi stok, jadi Anda tahu barang mana yang perlu dipesan."],
+["Pamflet","<mark>Yuk ikuti seminar spektakuler yang akan membuka wawasan kalian tentang dunia</mark> kewirausahaan <mark>secara mendalam dan menyeluruh bersama para pembicara hebat!!!</mark>","<b>Memulai Usaha dengan Modal di Bawah 5 Juta</b><br>Sabtu, 12 Oktober · 09.00–12.00 WIB<br>Aula Gedung B · Gratis · Daftar lewat QR"],
+["Commit","<code><mark>✨ Implemented robust and comprehensive</mark> fix for <mark>the issue where users were experiencing problems with</mark> login</code>","<code>Fix login failure when email has uppercase letters</code>"],
+["Email","<mark>Exciting news! We're thrilled to announce a game-changing feature that will revolutionize</mark> the way you <mark>manage your workflow</mark>.","You can now assign a task to two people. It closes when either one marks it done. Live for all workspaces today."]];
+const G=[["Skripsi & jurnal","Research papers"],["Laporan","Reports"],["Proposal","Proposals"],["Copy website","Website copy"],["README & commit","Code docs"],["Naskah video","Video scripts"],["Iklan & caption","Ads & captions"],["Brosur & pamflet","Brochures & flyers"],["Email","Email"],["Slide & pidato","Slides & speeches"],["CV & bio","CVs & bios"],["Teks kebijakan","Policy text"]];
+let L="id",cur=0;
+function render(){
+  document.documentElement.lang=L;
+  document.querySelectorAll("[data-i]").forEach(e=>{const v=T[L][e.dataset.i];if(v)e.textContent=v});
+  document.querySelectorAll(".copy").forEach(b=>b.textContent=T[L].copy);
+  document.getElementById("lang").textContent=L==="id"?"EN":"ID";
+  document.getElementById("tabs").innerHTML=EX.map((x,i)=>`<button role="tab" aria-selected="${i===cur}" data-n="${i}">${x[0]}</button>`).join("");
+  const x=EX[cur];
+  document.getElementById("pane").innerHTML=`<div class="before fade"><span class="lbl">${T[L].before}</span><p>${x[1]}</p></div><div class="after fade"><span class="lbl">${T[L].after}</span><p>${x[2]}</p></div>`;
+  document.getElementById("genres").innerHTML=G.map(g=>`<div><b>${L==="id"?g[0]:g[1]}</b></div>`).join("");
+}
+document.getElementById("tabs").onclick=e=>{const n=e.target.dataset.n;if(n!==undefined){cur=+n;render()}};
+document.getElementById("lang").onclick=()=>{L=L==="id"?"en":"id";try{localStorage.setItem("lugas-lang",L)}catch(e){}render()};
+try{L=localStorage.getItem("lugas-lang")||L}catch(e){}
+document.addEventListener("click",e=>{if(e.target.classList.contains("copy")){const t=e.target.parentElement.textContent.replace(e.target.textContent,"");navigator.clipboard.writeText(t.trim());e.target.textContent=T[L].copied;setTimeout(()=>e.target.textContent=T[L].copy,1400)}});
+render();
+</script>
+</body>
+</html>

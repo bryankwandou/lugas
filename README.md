@@ -1,4 +1,5 @@
 # Lugas
+nLive guide: https://lugas.vercel.app
 
 A writing skill for Claude (and other LLMs) that rewrites or drafts text so it reads
 clearly and naturally, the first time. Indonesian first, English second.
@@ -13,7 +14,7 @@ else's work. See [references/boundaries.md](references/boundaries.md).
 
 **Claude Code (personal):**
 ```bash
-git clone <repo-url> ~/.claude/skills/lugas
+git clone https://github.com/bryankwandou/lugas ~/.claude/skills/lugas
 ```
 
 **Claude Code (one project):** copy the folder to `.claude/skills/lugas` in the repo.
