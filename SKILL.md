@@ -121,6 +121,7 @@ The point is to stop the 10-retry loop. So:
 | `references/patterns-universal.md` | Any language without its own pattern file |
 | `references/adding-a-language.md` | User wants another language |
 | `references/research-basis.md` | User asks why a rule exists, or you are changing one |
+| `references/literature.md` | Look up a `[lit: ...]` tag, or check the evidence before changing a rule (130 annotated sources by theme) |
 
 ## Related skills
 

@@ -63,3 +63,28 @@ fine. Remove reflexive, repeated, or empty uses.
 5. Contractions are fine in copy, emails, docs. Avoid in formal papers.
 6. Match spelling variant to audience (US/UK) and keep it consistent.
 7. Short sentences for emphasis. Not every time.
+
+## §6 Research-backed additions (September 2026)
+
+Each entry is tagged with its source in `literature.md`. These are editing targets
+because they make text worse for a reader. None of them is a way to move a detector
+score, and the skill does not use them that way (`boundaries.md`).
+
+| Pattern | What the research found | Fix |
+|---|---|---|
+| **Noun pile-up.** "The implementation of the optimisation of the process" | Instruction-tuned models keep a noun-heavy, informationally dense style even when asked to sound informal [lit: Reinhart 2024]; ChatGPT essays use more nominalisations [lit: Herbold 2023] | Turn nouns back into verbs: "we optimised the process" |
+| **No epistemic markers.** Every claim stated flat, no "probably", "in our sample", "we think" | ChatGPT essays have fewer discourse and epistemic markers than student essays [lit: Herbold 2023]; human scientists use "but", "however", "although" more [lit: Desaire 2023] | Put the hedge where the evidence is actually uncertain, once. §3.9 (no hedge stacks) still holds |
+| **Confident tone without support** | Verbalised LLM confidence is overconfident [lit: Xiong 2023]; only 58% of atomic facts in ChatGPT biographies were supported [lit: Min 2023] | Every confident factual sentence needs a source, a number from the user, or `[figure?]` |
+| **Generic terminology instead of the case at hand** | Human medical texts were more concrete and specific; ChatGPT used general terms [lit: Liao 2023]; reviewers found suspected AI abstracts "vaguer and more formulaic" [lit: Gao 2023] | Replace the category word with the instance: not "stakeholders" but "the three ward nurses" |
+| **Politeness and no feeling** | Explained classifier: ChatGPT reviews are polite, lack specific details, impersonal, rarely express feeling [lit: Mitrović 2023] | In reviews, emails, personal statements: one real reaction, stated plainly |
+| **Uniform sentence length** | Human news shows more scattered sentence lengths and more varied vocabulary [lit: Muñoz-Ortiz 2023] | Keep §5.7; let one sentence in a paragraph run long and one be very short |
+| **Cheerful, emotion-flattened register** | LLM news shows less fear and disgust, more joy [lit: Muñoz-Ortiz 2023]; ChatGPT dialogue scores higher on positive tone [lit: Sandler 2024] | Keep bad news bad. Do not add an upbeat closing line to a negative message |
+| **Padding for length** | RLHF reward gains are largely length [lit: Singhal 2023]; LLM judges prefer longer answers [lit: Saito 2023; Dubois 2024] | Longer is not better. Cut to what the reader needs |
+| **Agreeing with the user's framing** | Assistants are consistently sycophantic [lit: Sharma 2023; Perez 2022] | In rewrite mode keep the user's claims, but do not add praise of the user's idea (§4) |
+| **Canned templates across sections** | Models reuse syntactic templates from pre-training (76% of templates vs 35% for human text) [lit: Shaib 2024] | If three sections open with the same grammatical frame, rebuild two of them |
+| **Famous tell words** (delve, intricate, underscore) | Rose sharply in scientific abstracts after ChatGPT [lit: Kobak 2024; Juzek 2024] | Keep §2, but see the caution below |
+
+**Caution on word lists.** After "delve" became notorious its use fell, while other
+LLM-favoured words kept rising [lit: Geng 2025]. Deleting famous words and keeping the
+structure produces text that still reads as generated. Word lists age; the substance
+rules (§5.4, `structure-tells.md`) do not.

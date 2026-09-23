@@ -86,3 +86,35 @@ refleks, berulang, atau tanpa isi.
 | Resmi | Baku, "Bapak/Ibu", "kami", kalimat lengkap | Proposal, surat, laporan kantor |
 | Profesional santai | Baku ringan, "Anda", kalimat pendek | Website B2B, email bisnis, dokumentasi |
 | Santai | "kamu", partikel boleh (*kok, sih, deh*) secukupnya | Media sosial, brand anak muda |
+
+## §7 Tambahan berbasis riset (September 2026)
+
+Sumber setiap entri ada di `literature.md` (tag `[lit: ...]`). Hampir semua riset ini
+mengukur teks bahasa Inggris. Untuk bahasa Indonesia, pola di bawah dipakai sebagai
+pedoman menyunting, **bukan** hasil pengukuran pada teks Indonesia. Hanya dua sumber yang
+menyentuh bahasa Indonesia secara langsung: subset berita Indonesia di M4 [lit: Wang
+2023] dan studi deteksi BiLSTM [lit: Alif 2026]. Keduanya soal deteksi, bukan gaya.
+Tidak satu pun pola ini dipakai untuk mengejar skor detektor (`boundaries.md`).
+
+| Pola | Temuan riset | Perbaikan |
+|---|---|---|
+| **Tumpukan nomina.** "pelaksanaan kegiatan pengoptimalan proses" | Model instruksi menulis dengan gaya padat nomina, bahkan saat diminta santai [lit: Reinhart 2024]; esai ChatGPT lebih banyak nominalisasi [lit: Herbold 2023] | Kembalikan ke verba: "kami mempercepat proses". Sejalan dengan aturan *melakukan + nomina* di §2 |
+| **Tanpa penanda sikap.** Semua klaim datar, tanpa "tampaknya", "pada sampel kami", "menurut kami" | Esai ChatGPT miskin penanda wacana dan epistemik [lit: Herbold 2023] | Taruh satu penanda di klaim yang memang belum pasti. Jangan ditumpuk |
+| **Yakin tanpa dasar** | Keyakinan yang diucapkan LLM cenderung berlebihan [lit: Xiong 2023]; hanya 58% fakta atomik dalam biografi buatan ChatGPT yang didukung sumber [lit: Min 2023] | Klaim faktual yang tegas butuh sumber, angka dari pengguna, atau `[angka?]` |
+| **Istilah umum menggantikan kasus nyata** | Teks medis tulisan manusia lebih konkret; ChatGPT memakai istilah umum [lit: Liao 2023]; abstrak yang dicurigai buatan AI "lebih kabur dan formulaik" [lit: Gao 2023] | Ganti "para pemangku kepentingan" dengan "tiga perawat bangsal" |
+| **Sopan, tanpa perasaan** | ChatGPT: sopan, tanpa detail spesifik, impersonal, jarang mengungkapkan perasaan [lit: Mitrović 2023] | Di ulasan, surat, personal statement: satu reaksi nyata, ditulis lugas |
+| **Nada ceria yang rata** | Teks LLM lebih sedikit emosi negatif, lebih banyak rasa senang [lit: Muñoz-Ortiz 2023] | Kabar buruk tetap kabar buruk. Jangan tambahkan kalimat penutup optimistis |
+| **Memanjang demi panjang** | Kenaikan skor RLHF sebagian besar datang dari panjang jawaban [lit: Singhal 2023] | Panjang bukan mutu. Potong sampai tinggal yang dibutuhkan pembaca |
+| **Gaya Barat menggantikan gaya lokal** | Saran AI mendorong penulis India ke gaya tulisan Barat [lit: Agarwal 2024] | Pertahankan cara bertutur, contoh, dan sapaan lokal pengguna. Jangan "merapikan" ke pola esai Inggris |
+| **Terjemahan terasa terjemahan** | Terjemahan LLM membawa *translationese* (harfiah, tidak alami) yang terbentuk saat pelatihan [lit: Li 2025] | Tulis langsung dalam bahasa Indonesia (lihat §4, "Terjemahan terasa Inggris") |
+| **Kerangka kalimat yang sama berulang** | Model memakai ulang templat sintaksis dari data pelatihan [lit: Shaib 2024] | Jika tiga bagian dibuka dengan pola kalimat yang sama, bangun ulang dua di antaranya |
+
+**Catatan daftar kata.** Kata "khas AI" yang terkenal cepat usang: begitu dikenal,
+penulis menghindarinya, sementara kata lain terus naik [lit: Geng 2025]. Menghapus kata
+tanpa memperbaiki struktur dan isi tidak menyelesaikan masalah.
+
+**Catatan untuk penulis non-penutur Inggris.** Detektor AI sangat tidak andal pada teks
+manusia yang sedikit dipoles AI (bahasa Arab: akurasi pada teks manusia turun dari 92%
+ke 12%) [lit: Almohaimeed 2025], dan kurang akurat untuk bahasa selain Inggris [lit:
+Orenstrakh 2023]. Mahasiswa Indonesia yang menulis dalam bahasa Inggris termasuk
+kelompok yang paling rawan salah tuduh. Skill ini tetap tidak menjanjikan skor.

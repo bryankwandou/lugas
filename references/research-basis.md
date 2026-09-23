@@ -268,6 +268,49 @@ one is contradicted by later work, change the rule it supports, or delete the ru
 
 ---
 
+## G. The wider literature (added September 2026)
+
+`references/literature.md` now holds 130 further sources, each retrieved and checked
+(metadata and abstract) before it was written down. What they changed:
+
+- **`patterns-en.md` §6 and `patterns-id.md` §7.** New targets with measured backing:
+  noun pile-up [lit: Reinhart 2024; Herbold 2023], missing epistemic markers
+  [lit: Herbold 2023; Desaire 2023], confidence without support [lit: Xiong 2023;
+  Min 2023], generic terminology [lit: Liao 2023; Gao 2023], flattened emotion
+  [lit: Muñoz-Ortiz 2023], length padding [lit: Singhal 2023], sycophancy
+  [lit: Sharma 2023], reused syntactic templates [lit: Shaib 2024].
+- **The word-list caution.** Famous tell words fade once people know them, while
+  others keep rising [lit: Geng 2025]. This is why the kill lists are "not an absolute
+  ban list" and why the structural pass follows them.
+- **`patterns-universal.md` §5.** Non-English tells (Japanese function words and
+  commas [lit: Zaitsu 2023]), translationese as a trained habit [lit: Li 2025], and
+  the Western drift of AI suggestions [lit: Agarwal 2024].
+- **`structure-tells.md` §5.** Independent support for the structural layer
+  [lit: Kim 2024; Xu 2024; Chakrabarty 2023, 2024], plus counter-evidence
+  [lit: Harel-Canada 2024; Porter 2024].
+- **The no-score rule, reinforced.** Detectors are fooled by one extra space
+  [lit: Cai 2023], by prompting [lit: Lu 2023] and by paraphrase [lit: Krishna 2023;
+  Sadasivan 2023], and they flag lightly polished human text as AI [lit: Saha 2025;
+  Almohaimeed 2025]. Expert human editing evades them [lit: Artemova 2024]. Watermarks
+  can be spoofed [lit: Sadasivan 2023], and strong watermarking is provably impossible
+  under stated assumptions [lit: Zhang 2023]. A detector score measures probability,
+  not quality. Nothing in the new sources changes `boundaries.md` §1.
+- **Why edit rather than regenerate, again.** An LLM asked to rewrite AI text changes
+  it little [lit: Mao 2024], and each paraphrase round moves text further from the
+  author's own style [lit: Tripto 2023].
+
+**Indonesian gap, stated honestly.** Searches found no peer-reviewed study of the
+*style* of AI-written Indonesian. The only Indonesian-specific items are M4's
+Indonesian news subset and one national-journal detection study (Alif et al., 2026).
+The Indonesian rules remain editorial judgement supported by cross-language findings.
+
+**Tag format.** `[lit: Surname Year]` = first author and year of an entry in
+`literature.md`. "Chakrabarty 2023" = *Art or Artifice?* (arXiv:2309.14556, CHI
+2024); "Chakrabarty 2024" = *Can AI writing be salvaged?* (arXiv:2409.14509). "Wang 2023" in the
+Indonesian notes = M4 (arXiv:2305.14902).
+
+---
+
 ## How to use this file
 
 Do not cite it at the user. It exists so that:

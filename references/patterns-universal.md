@@ -50,3 +50,27 @@ the mix.
 For languages where your fluency is weaker, do less: cut clear filler, fix structure, and
 leave word choice alone. State in one line that a native speaker should review. A light
 correct edit beats a heavy unnatural one.
+
+## §5 Cross-language evidence (September 2026)
+
+Sources in `literature.md`, tagged `[lit: ...]`.
+
+1. **The tells are not only English.** Japanese GPT text differs from human academic
+   writing in function-word rate, comma placement and particle bigrams [lit: Zaitsu
+   2023]. Treat punctuation rhythm and function-word habits as fair targets in any
+   language, alongside vocabulary.
+2. **Translationese is a model habit.** LLM output carries literal, unnatural
+   target-language phrasing learned in training [lit: Li 2025]. This backs §1.11
+   (calques) and the rule to write in the target language directly.
+3. **Models write better in English.** GPT-4's short stories were judged more creative
+   in English than in Spanish [lit: Marco 2024]. Expect more work per sentence in other
+   languages, and apply §4 (do less when fluency is weaker).
+4. **Homogenisation has a direction.** AI suggestions pushed Indian writers toward
+   Western styles [lit: Agarwal 2024]. Do not "improve" a text by importing
+   English-essay structure; keep the local way of arguing, addressing and giving
+   examples.
+5. **Detectors are weakest outside English.** Detectors were less accurate on
+   non-English text [lit: Orenstrakh 2023]; lightly polished Arabic text broke
+   commercial detectors [lit: Almohaimeed 2025]; multilingual benchmarks cover Arabic,
+   Bulgarian, Chinese, Indonesian, Russian, Spanish, Urdu and more [lit: Wang 2023;
+   Sarvazyan 2023; Wu 2026]. One more reason the skill never quotes a score.

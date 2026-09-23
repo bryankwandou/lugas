@@ -172,6 +172,31 @@ they were measured on Indonesian text.
 
 ---
 
+## §5 Wider evidence for the structural layer (September 2026)
+
+StoryScope is not alone. Sources in `literature.md`, tagged `[lit: ...]`.
+
+- **Structure is where human writing varies.** Human texts show more variability in
+  hierarchical discourse structure than LLM texts, and discourse features kept working
+  on paraphrased samples [lit: Kim 2024]. Same conclusion as StoryScope by a different
+  method: rewording leaves the skeleton.
+- **Plots repeat across generations.** Stories from the same prompt reuse combinations
+  of plot elements [lit: Xu 2024]; LLM stories are lower in novelty and surprise
+  [lit: Ismayilzada 2024] and pass 3-10x fewer expert creative-writing tests than
+  professional stories [lit: Chakrabarty 2023]. Habit 3 (single-track plot) and
+  habit 7 (closed world) are the local form of this.
+- **Professional editors name the same faults.** Writers editing LLM paragraphs agreed
+  on a taxonomy that includes clichés and unnecessary exposition [lit: Chakrabarty
+  2024]. Unnecessary exposition is habit 1.
+- **Coherence is what careful readers notice.** People detecting generated text in
+  groups most often cited lack of coherence and consistency [lit: Uchendu 2023]. Before
+  the seven habits, check that names, numbers and claims agree from start to end.
+- **Counterweight.** On a reader-centred depth scale, GPT-4 stories matched highly
+  rated Reddit stories [lit: Harel-Canada 2024], and non-experts preferred AI poems
+  [lit: Porter 2024]. The structural pass is craft for a demanding reader, not a claim
+  that machine text is always worse.
+- **Transfer caution stays.** These studies are almost all English. §4 still applies.
+
 ## Source
 
 Local copies: `research/storyscope-2604.03136v6.pdf`.
