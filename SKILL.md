@@ -64,6 +64,25 @@ Core rules, all languages:
 8. **Zero emoji** unless the user's brand voice explicitly uses them.
 9. **Keep the author's voice.** If the input has a quirk that is correct and intentional, keep it.
 
+### 4.5. Restructure (texts over ~300 words)
+
+Wording is the shallow layer. The habits that make text read as machine-written are
+structural, and they survive any amount of rephrasing — this is measured, not a hunch
+(`references/research-basis.md` §A). Skip this step only for captions, commit messages,
+and other very short work.
+
+Run the seven-point pass in `references/structure-tells.md` §3:
+
+1. Delete the sentences that explain what the reader just read.
+2. Keep one thread unresolved. A text where everything closes is hiding something.
+3. Name what the main decision cost.
+4. Name what acted from outside the subject's control.
+5. Turn every generic noun into a real one — or an honest `[isi: ...]`. Never invent it.
+6. Check that intensity rises. Interchangeable sections mean a flat piece.
+7. Cut the epilogue if the genre does not require a summary.
+
+If the text passes the wording rules but fails this pass, the wording pass was wasted.
+
 ### 5. Check (the gate)
 
 Run `references/checklist.md`. It takes under a minute. If any **hard fail** item
@@ -94,8 +113,19 @@ The point is to stop the 10-retry loop. So:
 | `references/patterns-id.md` | Indonesian text |
 | `references/patterns-en.md` | English text |
 | `references/patterns-universal.md` | Any other language (and regional languages of Indonesia) |
+| `references/structure-tells.md` | Step 4.5 — any text over ~300 words, always for narrative |
 | `references/genres.md` | Always — jump to the genre section |
 | `references/checklist.md` | Step 5, always |
 | `examples/before-after-id.md` | Unsure what "good" looks like in Indonesian |
 | `examples/before-after-en.md` | Unsure what "good" looks like in English |
+| `references/patterns-universal.md` | Any language without its own pattern file |
 | `references/adding-a-language.md` | User wants another language |
+| `references/research-basis.md` | User asks why a rule exists, or you are changing one |
+
+## Related skills
+
+- **`rangka`** — builds the outline before any prose exists. If the user has no draft
+  and the document is long, structure comes first; hand back here for the drafting.
+- **`pedoman`** — campus and institutional format compliance (margins, cover pages,
+  citation style, required sections). When a text must satisfy a university guideline,
+  `pedoman` owns the format and this skill owns the prose inside it.

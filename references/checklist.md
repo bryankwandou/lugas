@@ -23,6 +23,30 @@ Run before delivering. Silent. Fix, don't report.
 - [ ] Sentences over the genre's length limit.
 - [ ] Non-baku spelling in formal Indonesian (analisa, praktek, resiko, merubah, ijin).
 
+## Structural gate — texts over ~300 words
+
+Wording can pass while the shape still reads as machine-written. See
+`structure-tells.md` for the evidence and the fixes.
+
+Hard fail:
+
+- [ ] A sentence explains what the reader just read (the single largest human/AI gap).
+- [ ] A generic noun stands where a real name belongs, with no `[isi: ...]` marking it.
+- [ ] A specific name, number, or source was invented to fill such a gap. Never.
+
+Soft fail — fix if the genre allows:
+
+- [ ] Nothing is left unresolved; every thread closes.
+- [ ] The main decision or recommendation is shown as costless.
+- [ ] Nothing outside the subject's control affects the outcome.
+- [ ] Emotion appears only as physical sensation, never named plainly.
+- [ ] Every quote lands the thesis in the text's own vocabulary.
+- [ ] Sections are interchangeable in intensity — no escalation.
+- [ ] A closing section only restates, in a genre that does not need a summary.
+
+Claude-specific, check these two every time: **flat escalation**, and **an epilogue
+nobody asked for**.
+
 ## Read-aloud test
 
 Read the first and last paragraph as if speaking to the intended reader. If a phrase
