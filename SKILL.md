@@ -1,6 +1,6 @@
 ---
 name: lugas
-description: Rewrite or draft any text so it reads like a careful human wrote it — plain, specific, no machine filler. Works for Indonesian first, English second. Use when the user says "tulisan ini terlalu AI", "parafrase", "bikin natural", "rapikan tulisan", "sounds like ChatGPT", "make this less robotic", "humanize", "edit this copy", or asks for a report, research paper, proposal, website copy, README, commit message, video script, ad, brochure, pamphlet, email, or caption. Aims to get it right in one pass so the user does not have to re-prompt ten times.
+description: Rewrite or draft any text so it reads like a careful human wrote it — plain, specific, no machine filler. Works for Indonesian first, English second. Use when the user says "tulisan ini terlalu AI", "parafrase", "bikin natural", "rapikan tulisan", "sounds like ChatGPT", "make this less robotic", "humanize", "edit this copy", or asks for a report, research paper, proposal, and for campus writing — kerangka and format for KKP/magang, proposal tugas akhir, skripsi, tesis, proposal kegiatan, especially Universitas Atma Jaya Makassar (UAJM), plus 11 more Indonesian and 5 foreign institutions. Also for website copy, README, commit message, video script, ad, brochure, pamphlet, email, or caption. Aims to get it right in one pass so the user does not have to re-prompt ten times.
 ---
 
 # Lugas
@@ -130,10 +130,18 @@ The point is to stop the 10-retry loop. So:
 | `references/literature.md` | Look up a `[lit: ...]` tag, or check the evidence before changing a rule (130 annotated sources by theme) |
 | `references/literature-2.md` | 385 further sources (arXiv, 2022–2026): narrative, creativity, detection, evasion, stylometry, academic writing, non-English, co-writing — screened by abstract, read the paper before leaning on one |
 
-## Related skills
+## Kampus: Atma Jaya Makassar and other universities
 
-- **`rangka`** — builds the outline before any prose exists. If the user has no draft
-  and the document is long, structure comes first; hand back here for the drafting.
-- **`pedoman`** — campus and institutional format compliance (margins, cover pages,
-  citation style, required sections). When a text must satisfy a university guideline,
-  `pedoman` owns the format and this skill owns the prose inside it.
+Lugas carries three campus guides in `kampus/`. Each has a `GUIDE.md` (read it first)
+and its own `references/`; paths inside a guide are relative to that guide's folder.
+Where a guide says "the `pedoman` skill" or "the `rangka` skill", read the sibling
+folder here instead. Order of work: **outline → prose → format**.
+
+| Need | Read |
+|---|---|
+| UAJM student: KKP/magang, proposal TA, Ringkasan Kapasitas Diri, skripsi, naskah jurnal, seminar, sidang — the whole route with outlines and checks | `kampus/atmajaya/GUIDE.md` |
+| Outline (kerangka bab/subbab) of any document: proposal kegiatan, LPJ, SK, AD/ART, laporan, makalah, tesis, website, video — or turning research files into one outline | `kampus/rangka/GUIDE.md` |
+| Format compliance against a guideline: margins, fonts, cover, numbering, citation style, eligibility gates — UAJM FTI plus ITB, UI, IPB, UGM Faperta, UB, ITS, Unair, Unhas, UNS, Unpad, Undip, and five foreign institutions | `kampus/pedoman/GUIDE.md` |
+
+Guidelines outrank this file on format and structure; this file owns the prose inside
+the structure. Never invent campus facts — mark gaps `[ISI: …]` or `[CEK: …]`.
