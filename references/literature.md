@@ -18,6 +18,8 @@ Rules for this file:
   DetectRL, the style-shift stress test, the detection surveys listed there) are not
   repeated here.
 
+Part 2, with 385 further sources in eight more themes, is `literature-2.md`.
+
 ## A. Detection methods: what the machines actually measure
 
 - **E. Mitchell, Yoonho Lee, Alexander Khazatsky et al. (2023). DetectGPT: Zero-Shot Machine-Generated Text Detection using Probability Curvature.** International Conference on Machine Learning. <https://arxiv.org/abs/2301.11305>

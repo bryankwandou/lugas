@@ -128,6 +128,7 @@ The point is to stop the 10-retry loop. So:
 | `references/adding-a-language.md` | User wants another language |
 | `references/research-basis.md` | User asks why a rule exists, or you are changing one |
 | `references/literature.md` | Look up a `[lit: ...]` tag, or check the evidence before changing a rule (130 annotated sources by theme) |
+| `references/literature-2.md` | 385 further sources (arXiv, 2022–2026): narrative, creativity, detection, evasion, stylometry, academic writing, non-English, co-writing — screened by abstract, read the paper before leaning on one |
 
 ## Related skills
 
