@@ -13,6 +13,7 @@ const SEL = [
   ".how > div", ".atabs button", ".apane",
   ".steps > li", ".grid > div", ".fails > li",
   ".uc > div", ".cmp-head > div", ".cmp-row > div",
+  ".stats > div", ".st-themes button", ".st-legend", ".st-rows", "#structure > h3", "#structure > .st-sub", "#fpTabs button", ".fp", ".fam-c",
   "footer > *",
 ].join(",");
 

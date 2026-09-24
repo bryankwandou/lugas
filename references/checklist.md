@@ -43,6 +43,10 @@ Soft fail — fix if the genre allows:
 - [ ] Every quote lands the thesis in the text's own vocabulary.
 - [ ] Sections are interchangeable in intensity — no escalation.
 - [ ] A closing section only restates, in a genre that does not need a summary.
+- [ ] The main person is introduced by a physical description before doing or saying anything.
+- [ ] Every setting mirrors the mood of the scene it is in.
+- [ ] Narrative runs in strict time order and nothing late changes how an early part reads.
+- [ ] The problem arrives only after a long scene-setting opening.
 
 Claude-specific, check these two every time: **flat escalation**, and **an epilogue
 nobody asked for**.

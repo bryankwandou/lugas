@@ -83,6 +83,11 @@ Run the seven-point pass in `references/structure-tells.md` §3:
 
 If the text passes the wording rules but fails this pass, the wording pass was wasted.
 
+For fiction and long narrative (over ~1,000 words), also fill the outline audit in
+`references/storyscope.md` §5 from the draft. The measured signal is spread across
+many dimensions at once, so fixing one habit does not move the shape; fix up to
+three red flags per pass.
+
 ### 5. Check (the gate)
 
 Run `references/checklist.md`. It takes under a minute. If any **hard fail** item
@@ -114,6 +119,7 @@ The point is to stop the 10-retry loop. So:
 | `references/patterns-en.md` | English text |
 | `references/patterns-universal.md` | Any other language (and regional languages of Indonesia) |
 | `references/structure-tells.md` | Step 4.5 — any text over ~300 words, always for narrative |
+| `references/storyscope.md` | Narrative over ~1,000 words (run its §5 outline audit), or when asked why a structural rule exists — all 30 measured features and the model fingerprints |
 | `references/genres.md` | Always — jump to the genre section |
 | `references/checklist.md` | Step 5, always |
 | `examples/before-after-id.md` | Unsure what "good" looks like in Indonesian |

@@ -18,8 +18,9 @@ Two results matter for this skill:
 
 1. **Structure alone separates human from machine at 93.2% macro-F1.** Narrative
    features carry ~97% of the signal that a full stylistic model gets.
-2. **Editing the style away does not help.** When stories were deliberately rewritten
-   to strip style tells, detection stayed at 93.9% — it did not drop a full point.
+2. **Editing the style away does not help.** When 278 Gemini stories were rewritten
+   span by span to strip style tells (the LAMP method), narrative-only detection went
+   from 95.5% to 93.9% — a drop of 1.6 points.
 
 So: a text can pass every item in `patterns-id.md` and `patterns-en.md` and still read
 as machine-written, because the *shape of the thinking* is unchanged. Paraphrasing
@@ -35,7 +36,7 @@ and no edit can promise a score.
 
 ---
 
-## §1 The seven habits, with the measured gap
+## §1 Eleven habits, with the measured gap
 
 Numbers below are from StoryScope: AI rate vs. human rate on the same prompts.
 They are evidence that a habit is systematic, not a target to hit.
@@ -109,6 +110,44 @@ actual Tuesday. It steps outside itself. AI text is self-contained and generic �
 Never invent the specific — `boundaries.md` §4 is absolute. An honest `[isi: ...]`
 is better than a plausible invention, always.
 
+### 8. The hero is introduced by a description — **52% vs. 30%**
+
+The main character arrives as a portrait: height, hair, the coat, the look in the
+eyes. Human writers more often let a person arrive talking or doing something; the
+human fingerprint is introduction *in dialogue* (`storyscope.md` §4). In a profile or
+company story this is the paragraph of adjectives before the person does anything.
+
+**Fix:** open on the person acting or speaking. Move the description later, or cut it.
+
+### 9. The setting mirrors the mood — mirror **4.07 vs. 3.58**, sensory density **3.93 vs. 3.66**
+
+Rain when someone is sad, a stuffy room when they feel trapped, and a smell in every
+scene. The environment exists to repeat the emotion.
+
+**Fix:** let one place be neutral or at odds with the mood. Keep the sensory detail
+that carries information; cut the detail that only echoes a feeling.
+
+### 10. Straight-line time, no second reading — discontinuity **2.12 vs. 2.40**, recontextualization **2.95 vs. 3.28**
+
+Events run from first cause to last effect in order, and nothing revealed late
+changes the meaning of an earlier scene. Human stories use time jumps to hold
+something back, then show it.
+
+**Fix (fiction, essay, case study):** consider opening at the consequence and going
+back. Plant one early detail that the ending reinterprets. Do not add a flashback
+just to have one; add it where it delays something the reader wants.
+
+### 11. A long warm-up before the stakes — pre-threat investment **2.99 vs. 2.76**, opening grounding **2.33 vs. 2.12**
+
+The opening sets the scene carefully and the trouble arrives late. Claude's own
+fingerprint compounds this: the flattest escalation of any source.
+
+**Fix:** get the problem onto the first page. Then check that each later section is
+harder or costlier than the one before.
+
+All thirty measured features, with definitions and both columns, are in
+`storyscope.md` §3. Habits 8–11 come from the same table as habits 1–7.
+
 ---
 
 ## §2 Model fingerprints
@@ -118,11 +157,11 @@ habits. Know your own.
 
 | Model | Fingerprint | What to watch for in your own output |
 |---|---|---|
-| **Claude** | Flattest event escalation; uniform narrative voice; reaches for epilogues; honors literary tradition (62% vs. 39–56%); avoids dream sequences | Stakes that never actually rise. A tidy closing section nobody asked for. Reverent, evenly-modulated tone throughout. |
+| **Claude** | Flattest event escalation; low event-type diversity; uniform narrative voice; reaches for epilogues and flash-forward endings; honors literary tradition (62% vs. 39–56%); avoids dream sequences; drifts to uncanny/haunted moods | Stakes that never actually rise. A tidy closing section nobody asked for. Reverent, evenly-modulated tone throughout. |
 | **GPT** | Gossip/rumor as plot engine (64% vs. 44–55%); retrospective framing across years; ensemble casts; subverts expectations (41% vs. 27–36%) | "Looking back, it all started when…" framing. A twist inserted for its own sake. |
 | **Gemini** | Characterizes from outside; tidiest endings and long denouements; bleakest settings (88% tagged bleak/oppressive) | Description that never enters a head. An ending that keeps ending. Unearned gloom. |
-| **DeepSeek** | Front-loads crucial context | Everything explained before anything happens. |
-| **Kimi** | Generic center, fewest distinctive choices | Competent and shapeless. |
+| **DeepSeek** | Front-loads crucial context; backstory evenly interleaved; visible narrator | Everything explained before anything happens. |
+| **Kimi** | Generic center, fewest distinctive choices; opens in medias res | Competent and shapeless. |
 
 Claude's is the one that matters here, and it is the hardest to feel from the inside:
 **flat escalation and an epilogue that closes what should stay open.** Before
