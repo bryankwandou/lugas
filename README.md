@@ -42,7 +42,15 @@ references/genres.md         12 genre sections
 references/checklist.md      final quality gate
 references/adding-a-language.md
 examples/                    before/after pairs
+references/storyscope.md     StoryScope (arXiv:2604.03136) encoded in full
+references/literature*.md    515 sources; literature-read.md = checked in full
+kampus/atmajaya/             UAJM: KKP, proposal, skripsi, sidang (Informatika 2015)
+kampus/pedoman/              format checks: 14 Indonesian + 5 foreign institutions
+evals/                       real-use test runs
 ```
+
+Coverage is stated per file. Universities not listed are **not** encoded; the skill
+asks for their guideline instead of guessing.
 
 ## License
 
