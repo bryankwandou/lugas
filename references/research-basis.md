@@ -17,7 +17,7 @@ Entries are grouped by what they changed in the skill.
 **Russell, J., Rajendhran, R., Pham, C. M., Iyyer, M., & Wieting, J. (2026).
 StoryScope: Investigating idiosyncrasies in AI fiction.** arXiv:2604.03136.
 University of Maryland & Google DeepMind. Code: github.com/jenna-russell/storyscope
-Local copy: `research/storyscope-2604.03136v6.pdf`
+PDF: <https://arxiv.org/pdf/2604.03136v6>
 
 The paper this skill's biggest revision is built on.
 

@@ -2,8 +2,8 @@
 
 Source: Russell, Rajendhran, Pham, Iyyer & Wieting, *StoryScope: Investigating
 idiosyncrasies in AI fiction*, arXiv:2604.03136v6 (10 Aug 2026), **COLM 2026**.
-University of Maryland + Google DeepMind. Local copy:
-`research/storyscope-2604.03136v6.pdf`. Every number below was read from that PDF
+University of Maryland + Google DeepMind. PDF:
+<https://arxiv.org/pdf/2604.03136v6>. Every number below was read from that PDF
 (section or table given). `structure-tells.md` is the short version; this is the
 long one. Load this file when the text is narrative, when the user asks *why* a
 structural rule exists, or when the short version does not settle a case.

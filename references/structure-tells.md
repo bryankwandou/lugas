@@ -238,5 +238,5 @@ StoryScope is not alone. Sources in `literature.md`, tagged `[lit: ...]`.
 
 ## Source
 
-Local copies: `research/storyscope-2604.03136v6.pdf`.
+PDF: <https://arxiv.org/pdf/2604.03136v6>.
 Notes and the wider literature: `references/research-basis.md`.
