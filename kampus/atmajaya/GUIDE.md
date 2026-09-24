@@ -14,7 +14,6 @@ It sits on top of three sibling skills and hands work to them:
 | Need | Owner |
 |---|---|
 | Format compliance of a draft (margin, font, numbering, citation entries) | `pedoman` → `references/uajm-fti.md` |
-| Building an outline from scratch for any document | `rangka` |
 | Wording and prose quality | `lugas` |
 
 When those are not installed, this skill carries enough of each to finish the job

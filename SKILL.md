@@ -134,13 +134,11 @@ The point is to stop the 10-retry loop. So:
 
 Lugas carries two campus guides in `kampus/`. Each has a `GUIDE.md` (read it first)
 and its own `references/`; paths inside a guide are relative to that guide's folder.
-Where a guide says "the `pedoman` skill", read the sibling folder here instead. The
-`rangka` outline skill is separate and not included here; use it if installed. Order of work: **outline (atmajaya) → prose (this file) → format (pedoman)**.
+Where a guide says "the `pedoman` skill", read the sibling folder here instead. Order of work: **outline (atmajaya) → prose (this file) → format (pedoman)**.
 
 | Need | Read |
 |---|---|
 | UAJM student: KKP/magang, proposal TA, Ringkasan Kapasitas Diri, skripsi, naskah jurnal, seminar, sidang — the whole route with outlines and checks | `kampus/atmajaya/GUIDE.md` |
-| Outline of a non-campus document (proposal kegiatan, LPJ, SK, website, video) | not in lugas — the separate `rangka` skill, if installed |
 | Format compliance against a guideline: margins, fonts, cover, numbering, citation style, eligibility gates — UAJM FTI plus ITB, UI, IPB, UGM Faperta, UB, ITS, Unair, Unhas, UNS, Unpad, Undip, and five foreign institutions | `kampus/pedoman/GUIDE.md` |
 
 Guidelines outrank this file on format and structure; this file owns the prose inside
