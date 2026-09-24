@@ -61,6 +61,8 @@ separate pass.
 | User attached or named a pedoman | Read it. It governs. Skip to Step 1. |
 | UAJM student wanting the whole route (KKP, proposal, skripsi, sidang) | the `atmajaya` skill, if installed; format questions stay here |
 | UAJM Informatika, any document | `references/uajm-fti.md` |
+| UAJY (Atma Jaya **Yogyakarta**) Teknik Informatika | `references/uajy-fti.md` — not UAJM |
+| Unika Atma Jaya **Jakarta**, FEB skripsi (2025) | `references/atmajaya-jakarta-feb.md` — not UAJM; comparison only for UAJM Manajemen/Akuntansi |
 | ITB, S2/S3 (SPs ITB) | `references/itb-sps.md` |
 | UI, any level (skripsi/tesis/disertasi) | `references/ui.md` |
 | IPB, any level (PPKI edisi 4, 2019) | `references/ipb.md` |
@@ -123,7 +125,7 @@ guideline does not cover. Then stop.
 ## Scope, in order of confidence
 
 1. **UAJM FTI** — encoded clause by clause from the primary PDFs. High confidence.
-2. **Eleven more Indonesian campuses** — ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
+2. **Thirteen more Indonesian campuses** — UAJY Informatika, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
    each encoded from its own primary PDF with source table and clause numbers. High
    confidence for the edition stated; editions differ in age (2014–2023), so say which.
 3. **Indonesian universities generally** — shared conventions, the axes on which

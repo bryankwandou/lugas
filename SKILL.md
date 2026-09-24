@@ -1,6 +1,6 @@
 ---
 name: lugas
-description: Rewrite or draft any text so it reads like a careful human wrote it — plain, specific, no machine filler. Works for Indonesian first, English second. Use when the user says "tulisan ini terlalu AI", "parafrase", "bikin natural", "rapikan tulisan", "sounds like ChatGPT", "make this less robotic", "humanize", "edit this copy", or asks for a report, research paper, proposal, and for campus writing — kerangka and format for KKP/magang, proposal tugas akhir, skripsi, tesis, proposal kegiatan, especially Universitas Atma Jaya Makassar (UAJM), plus 11 more Indonesian and 5 foreign institutions. Also for website copy, README, commit message, video script, ad, brochure, pamphlet, email, or caption. Aims to get it right in one pass so the user does not have to re-prompt ten times.
+description: Rewrite or draft any text so it reads like a careful human wrote it — plain, specific, no machine filler. Works for Indonesian first, English second. Use when the user says "tulisan ini terlalu AI", "parafrase", "bikin natural", "rapikan tulisan", "sounds like ChatGPT", "make this less robotic", "humanize", "edit this copy", or asks for a report, research paper, proposal, and for campus writing — kerangka and format for KKP/magang, proposal tugas akhir, skripsi, tesis, proposal kegiatan, especially Universitas Atma Jaya Makassar (UAJM), plus 13 more Indonesian and 5 foreign institutions. Also for website copy, README, commit message, video script, ad, brochure, pamphlet, email, or caption. Aims to get it right in one pass so the user does not have to re-prompt ten times.
 ---
 
 # Lugas
@@ -140,7 +140,7 @@ Where a guide says "the `pedoman` skill", read the sibling folder here instead. 
 | Need | Read |
 |---|---|
 | UAJM student: KKP/magang, proposal TA, Ringkasan Kapasitas Diri, skripsi, naskah jurnal, seminar, sidang — the whole route with outlines and checks | `kampus/atmajaya/GUIDE.md` |
-| Format compliance against a guideline: margins, fonts, cover, numbering, citation style, eligibility gates — UAJM FTI plus ITB, UI, IPB, UGM Faperta, UB, ITS, Unair, Unhas, UNS, Unpad, Undip, and five foreign institutions | `kampus/pedoman/GUIDE.md` |
+| Format compliance against a guideline: margins, fonts, cover, numbering, citation style, eligibility gates — UAJM FTI plus UAJY, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB, ITS, Unair, Unhas, UNS, Unpad, Undip, and five foreign institutions | `kampus/pedoman/GUIDE.md` |
 
 Guidelines outrank this file on format and structure; this file owns the prose inside
 the structure. Never invent campus facts — mark gaps `[ISI: …]` or `[CEK: …]`.
