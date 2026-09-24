@@ -128,3 +128,10 @@ fakultas]`.
 **K-40 Naskah jurnal: harus terbit?** Pedoman mewajibkan naskah jurnal menyertai TA dan
 menyebut "belum pernah dipublikasikan" di pendahuluan; kewajiban terbit tidak disebut
 `[CEK: prodi]`.
+
+**K-41 Memegang pedoman atau template edisi 2013.** Pedoman TA TI edisi 1 Maret 2013
+(masih diunggah di fti.uajm.ac.id) berbeda dari edisi 2015 pada dua hal yang
+menentukan: gerbang usulan TA **122 sks** (2015: **115 sks** + Tugas Mandiri dan
+Seminar), dan **tidak ada skema penelitian terstruktur / Ringkasan Kapasitas Diri**
+(2015 menambahkannya, TA 1.4, 3). Pakai 2015; bila prodi masih menagih angka 2013,
+tunjukkan TA 1.1 edisi 2015 dan `[CEK: prodi]` edisi mana yang berlaku.
