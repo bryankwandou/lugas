@@ -88,3 +88,17 @@ score, and the skill does not use them that way (`boundaries.md`).
 LLM-favoured words kept rising [lit: Geng 2025]. Deleting famous words and keeping the
 structure produces text that still reads as generated. Word lists age; the substance
 rules (§5.4, `structure-tells.md`) do not.
+
+## §7 Read in full, 25 September 2026 (`literature-read.md`)
+
+- **Add to §2 watch list:** *showcase* (+508 %), *surpass* (+348 %), *notable*
+  (+264 %), *noteworthy* (+154 %), *emphasize* (+181 %) — frequency change in
+  scientific English since 2020 [lit: 2506.21817 Table 1]. Whole synonym groups rose
+  together, so swapping *underscore* for *emphasize* fixes nothing; say the specific
+  thing instead.
+- **Keep honest hedges.** Human scientists write longer paragraphs and use *but,
+  however, although* more than ChatGPT [lit: 2303.16352]. Cut empty hedges, not real
+  qualifications.
+- **Push for a rarer claim.** AI essays scored near-perfect on quality but their claims
+  were about one-fifth as rare as human claims (0.037 vs 0.170) [lit: 2602.01560]. When
+  drafting, ask what this writer knows that a generic essay on the topic would not say.
