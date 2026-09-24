@@ -9,11 +9,11 @@ For a UAJM student, this skill is the one place to start. It knows the whole roa
 what you must have before you may begin, what each document must contain, what the
 examiners check, and in what order.
 
-It sits on top of three sibling skills and hands work to them:
+It hands work to two siblings (inside lugas: `kampus/pedoman/` and lugas itself):
 
 | Need | Owner |
 |---|---|
-| Format compliance of a draft (margin, font, numbering, citation entries) | `pedoman` → `references/uajm-fti.md` |
+| Format compliance of a draft (margin, font, numbering, citation entries) | `pedoman` → `references/uajm-fti.md` (in lugas: `../pedoman/references/uajm-fti.md`) |
 | Wording and prose quality | `lugas` |
 
 When those are not installed, this skill carries enough of each to finish the job
