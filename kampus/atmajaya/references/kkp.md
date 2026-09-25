@@ -190,3 +190,29 @@ Lunak:
 - [ ] Alamat lengkap tempat KKP tidak ada (3.2.1d)
 
 Setelah seminar: revisi → pengesahan → hardcover 3 eksemplar (2.2l).
+
+## §8 Map berkas — kumpulkan sebelum mendaftar seminar
+
+Mahasiswa lebih sering tertahan di berkas daripada di isi laporan. Semua butir
+bertanda klausul disebut pedoman; butir *(saran)* tidak disebut pedoman, tanyakan
+ke prodi apakah diminta.
+
+| Berkas | Kapan didapat | Dari siapa | Klausul |
+|---|---|---|---|
+| Fotokopi KSM + form Permohonan Kerja Praktek | sebelum berangkat | mahasiswa → Ketua Jurusan | 2.2c |
+| Surat pengantar Ketua Prodi | sebelum berangkat | prodi | 2.2d |
+| Surat penolakan (bila pernah ditolak) | saat ditolak | instansi | 2.2f |
+| Surat persetujuan penerimaan | awal KKP | instansi → serahkan ke prodi | 2.2g |
+| Form Aktivitas Harian, terisi tiap hari | selama KKP | mahasiswa, diparaf pembimbing lapangan *(saran)* | 2.2i |
+| Form Penilaian pembimbing lapangan (bobot 30 %) | akhir KKP | pembimbing lapangan | 2.2i, 2.5 |
+| Lembar perkembangan pembimbing kampus | tiap konsultasi | dosen pembimbing | 3.3.2 |
+| Foto tiap jenis pekerjaan, mahasiswa terlihat | selama KKP | mahasiswa | 3.3.2 |
+| Surat keterangan selesai KKP | hari terakhir | instansi | *(saran)* |
+| Bukti laporan disetujui untuk seminar (bentuk lembar tidak diatur) | setelah draf disetujui | dosen pembimbing | 2.2k *(bentuk: saran)* |
+| Daftar hadir seminar, ≥ 5 peserta | hari seminar | mahasiswa | 2.2k, 2.4 |
+
+Form penilaian dan surat keterangan selesai harus diminta **sebelum hari terakhir di
+lokasi**. Setelah Anda pergi, pembimbing lapangan sulit dihubungi.
+
+Jadwal pendaftaran seminar tidak diatur pedoman 2015 → `[CEK: jadwal dan syarat
+daftar seminar KKP di prodi]`.

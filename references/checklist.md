@@ -33,6 +33,11 @@ Hard fail:
 - [ ] A sentence explains what the reader just read (the single largest human/AI gap).
 - [ ] A generic noun stands where a real name belongs, with no `[isi: ...]` marking it.
 - [ ] A specific name, number, or source was invented to fill such a gap. Never.
+- [ ] Output is mostly `[isi: ...]` and says nothing about where to get the data.
+      After the text, add one line per gap type: what to collect and from whom
+      (e.g. "stok opname terakhir — minta ke bagian gudang"; "3–5 penelitian
+      sejenis — Google Scholar/Garuda, 5 tahun terakhir"; "masalah nyata —
+      wawancara pemilik"). A skeleton without a route to fill it is not finished.
 
 Soft fail — fix if the genre allows:
 
