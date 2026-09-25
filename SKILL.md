@@ -124,7 +124,6 @@ The point is to stop the 10-retry loop. So:
 | `references/checklist.md` | Step 5, always |
 | `examples/before-after-id.md` | Unsure what "good" looks like in Indonesian |
 | `examples/before-after-en.md` | Unsure what "good" looks like in English |
-| `references/patterns-universal.md` | Any language without its own pattern file |
 | `references/adding-a-language.md` | User wants another language |
 | `references/research-basis.md` | User asks why a rule exists, or you are changing one |
 | `references/literature.md` | Look up a `[lit: ...]` tag, or check the evidence before changing a rule (130 annotated sources by theme) |
