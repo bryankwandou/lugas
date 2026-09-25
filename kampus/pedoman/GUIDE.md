@@ -71,6 +71,29 @@ separate pass.
 | PNUP — hanya skripsi D-4 (2016) | `references/pnup.md` |
 | UGM S1 — hanya FIB (2020) | `references/ugm-s1.md` |
 | BINUS — hanya S1 Management | `references/binus-s1.md` |
+| ITB S1 — hanya Oseanografi | `references/itb-s1.md` |
+| ITS S1, seluruh universitas (2022) | `references/its-s1.md` |
+| UK Petra, seluruh universitas (2025) | `references/petra-s1.md` |
+| Telkom — hanya FEB (2020) | `references/telkom-s1.md` |
+| UB S1 — hanya FIA (2024) | `references/ub-s1.md` |
+| UI S1 — hanya Psikologi | `references/ui-s1.md` |
+| UII — hanya Akuntansi FE (2016) | `references/uii-s1.md` |
+| UIN Jakarta — hanya FDIKOM (2024) | `references/uinjkt-s1.md` |
+| UMS — hanya Manajemen FEB (2017) | `references/ums-s1.md` |
+| UMY — hanya Agribisnis | `references/umy-s1.md` |
+| Unair S1 — hanya Farmasi (2020) | `references/unair-s1.md` |
+| Unand — hanya FEB (2025) | `references/unand-s1.md` |
+| Undip S1 — hanya FPIK (2026) | `references/undip-s1.md` |
+| Unej, seluruh universitas (2016) | `references/unej-s1.md` |
+| Unpad S1, seluruh universitas (2011) | `references/unpad-s1.md` |
+| UNS S1 — hanya FKIP (2015) | `references/uns-s1.md` |
+| Unsrat — hanya Faperta | `references/unsrat-s1.md` |
+| Unsri, format seluruh universitas (2019/2013) | `references/unsri-s1.md` |
+| Untar — hanya Ilmu Komunikasi (2020) | `references/untar-s1.md` |
+| Unud — hanya FISIP (2025) | `references/unud-s1.md` |
+| UNY S1, seluruh universitas (2023) | `references/uny-s1.md` |
+| UPN Veteran Jatim — hanya Faperta (2024) | `references/upnjatim-s1.md` |
+| USU — hanya FIB (2023) | `references/usu-s1.md` |
 | ITB, S2/S3 (SPs ITB) | `references/itb-sps.md` |
 | UI, any level (skripsi/tesis/disertasi) | `references/ui.md` |
 | IPB, any level (PPKI edisi 4, 2019) | `references/ipb.md` |
@@ -133,7 +156,7 @@ guideline does not cover. Then stop.
 ## Scope, in order of confidence
 
 1. **UAJM FTI** — encoded clause by clause from the primary PDFs. High confidence.
-2. **Twenty-one more Indonesian campuses** — Unhas S1, UNM, UMI FIKOM, UIN Alauddin, Unismuh FKIP, PNUP D-4, UGM FIB, BINUS Management, UAJY Informatika, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
+2. **Thirty-six more Indonesian campuses** (wave 2 added UII, UNY, Telkom, UPN Jatim, UIN Jakarta, Unand, USU, Unsri, Unud, Unsrat, Unej, UMY, UMS, Untar, UK Petra, plus S1 files for UI, ITB, Unpad, Undip, Unair, UNS, ITS, UB) — Unhas S1, UNM, UMI FIKOM, UIN Alauddin, Unismuh FKIP, PNUP D-4, UGM FIB, BINUS Management, UAJY Informatika, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
    each encoded from its own primary PDF with source table and clause numbers. High
    confidence for the edition stated; editions differ in age (2014–2023), so say which.
 3. **Indonesian universities generally** — shared conventions, the axes on which
