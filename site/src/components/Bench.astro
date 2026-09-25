@@ -1,0 +1,43 @@
+<section id="bench" data-rv-block>
+  <p class="lede" id="benchNote"></p>
+  <h2 id="benchH"></h2>
+  <p class="lede" id="benchP"></p>
+  <div class="stats" id="benchStats">
+    <div><b>150/150</b><span></span></div>
+    <div><b>476/476</b><span></span></div>
+    <div><b>0</b><span></span></div>
+    <div><b>79 → 2</b><span></span></div>
+  </div>
+  <p class="lede" id="benchLim"></p>
+  <p class="lede"><a id="benchLink" href="https://github.com/bryankwandou/lugas/tree/main/evals/bench-2026-09-25"></a></p>
+</section>
+<script>
+import { onLang } from "../scripts/i18n.js";
+const T = {
+  id: {
+    note: "Angka di atas berasal dari penelitian StoryScope (Russell dkk., 2026) yang menjadi dasar aturan Lugas, bukan hasil uji Lugas sendiri. Hasil uji Lugas ada di bawah.",
+    h: "Hasil uji Lugas sendiri",
+    p: "25 September 2026. 50 teks bergaya AI (25 Indonesia, 25 Inggris, 10 genre) ditulis ulang oleh Lugas. Tiap pasangan asli–hasil diacak menjadi A/B dan dinilai tiga penilai buta tanpa kunci jawaban.",
+    s: ["penilaian memilih versi Lugas sebagai lebih mirip tulisan manusia", "fakta (angka, nama, tanggal) tetap utuh", "kalimat tambahan, klaim hilang, atau hubungan sebab-akibat hilang yang ditemukan penilai", "frasa khas AI (\"di era\", \"signifikan\", \"robust\"…)"],
+    lim: "Batasan: penilai adalah instans model AI terpisah, bukan manusia. Belum diuji dengan detektor AI (Turnitin, GPTZero). Hasil akhir ini dicapai setelah tiga ronde perbaikan aturan; cacat tiap ronde dan semua data mentah tercatat di repo.",
+    link: "Data mentah, kunci jawaban, dan riwayat tiap ronde →",
+  },
+  en: {
+    note: "The figures above come from the StoryScope study (Russell et al., 2026) that Lugas's rules are based on, not from testing Lugas itself. Lugas's own test results are below.",
+    h: "Lugas's own test results",
+    p: "25 September 2026. 50 AI-style texts (25 Indonesian, 25 English, 10 genres) rewritten by Lugas. Each original/rewrite pair was shuffled into A/B and rated by three blind judges without the answer key.",
+    s: ["ratings picked the Lugas version as more human-written", "facts (numbers, names, dates) kept intact", "added sentences, dropped claims, or lost cause-effect links found by judges", "stock AI phrases (\"in today's\", \"robust\"…)"],
+    lim: "Limits: the judges are separate AI model instances, not people. Not tested against AI detectors (Turnitin, GPTZero). This final result came after three rounds of rule fixes; every round's defects and all raw data are in the repo.",
+    link: "Raw data, answer key, and every round's history →",
+  },
+};
+onLang((L) => {
+  const t = T[L] || T.en;
+  document.getElementById("benchNote").textContent = t.note;
+  document.getElementById("benchH").textContent = t.h;
+  document.getElementById("benchP").textContent = t.p;
+  document.querySelectorAll("#benchStats span").forEach((s, i) => (s.textContent = t.s[i]));
+  document.getElementById("benchLim").textContent = t.lim;
+  document.getElementById("benchLink").textContent = t.link;
+});
+</script>

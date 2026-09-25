@@ -1,5 +1,7 @@
 .vercel
-site/
+site/node_modules/
+site/dist/
+site/.astro/
 research/
 sources/
 *.pdf
