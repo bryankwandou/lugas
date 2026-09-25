@@ -44,6 +44,7 @@ references/adding-a-language.md
 examples/                    before/after pairs
 references/storyscope.md     StoryScope (arXiv:2604.03136) encoded in full
 references/literature*.md    515 sources; literature-read.md = checked in full
+rangka/                      outlines for any document, 22 Indonesian campuses + foreign
 kampus/atmajaya/             UAJM: KKP, proposal, skripsi, sidang (Informatika 2015)
 kampus/pedoman/              format checks: 37 Indonesian + 5 foreign institutions
 evals/                       real-use test runs

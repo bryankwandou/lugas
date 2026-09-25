@@ -1,0 +1,161 @@
+<!doctype html>
+<!--
+  Rangka — flowchart/diagram HTML template (assets/flowchart-template.html)
+  How to reuse:
+    1. Set DEFAULT_LANG below to the language the user wrote in ("id", "en", ...).
+    2. Replace T.id and T.en: title, sub, h (section headings), c (captions), d (Mermaid code).
+       Keep h, c, d the same length. Diagram text exists only for id and en;
+       es/fr/zh/ar translate the UI + headings/captions and show English diagram text.
+    3. Keep: theme default "light", the print CSS, the dual light/dark render, dir="rtl" for ar.
+  Everything the user must supply stays as [ISI: ...] / [FILL: ...] inside node text.
+-->
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مخطط منهجية الدراسة</title>
+<style>
+:root{--bg:#faf8f4;--fg:#1f1d1a;--muted:#6b665e;--card:#fff;--line:#e4dfd6;--acc:#2f5d50}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161513;--fg:#eee9e1;--muted:#a39d93;--card:#1f1e1b;--line:#34312c;--acc:#8fc7b5}}
+:root[data-theme="dark"]{--bg:#161513;--fg:#eee9e1;--muted:#a39d93;--card:#1f1e1b;--line:#34312c;--acc:#8fc7b5}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px 16px 64px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:16px}
+.bar label{font-size:.85rem;color:var(--muted)}
+select,button{font:inherit;font-size:.9rem;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+button.primary{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+h1{font-size:1.5rem;margin:0 0 4px}p.sub{color:var(--muted);margin:0 0 24px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px;overflow-x:auto}
+h2{font-size:1.1rem;margin:0 0 12px}figure{margin:0}figcaption{text-align:center;color:var(--muted);font-size:.9rem;margin-top:8px}
+.d{display:flex;justify-content:center}
+.d foreignObject [dir="rtl"]{direction:rtl;unicode-bidi:isolate} /* set by fixBidi(): RTL node labels get an RTL paragraph, so [placeholder] brackets land on the correct sides */
+.v-dark{display:none}
+:root[data-theme="dark"] .v-light{display:none}
+:root[data-theme="dark"] .v-dark{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) .v-light{display:none}:root:not([data-theme]) .v-dark{display:block}}
+.err{white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace;color:var(--muted)}
+@media print{
+  /* Always print light, whatever the screen theme (saves ink). !important beats the dark rules' specificity. */
+  :root{--bg:#fff !important;--fg:#000 !important;--muted:#333 !important;--card:#fff !important;--line:#999 !important}
+  html,body{background:#fff !important;color:#000 !important}
+  *{-webkit-print-color-adjust:economy;print-color-adjust:economy}
+  .bar{display:none !important}
+  .v-dark{display:none !important}.v-light{display:block !important}
+  section{overflow:visible !important;break-inside:avoid;border-color:#999;box-shadow:none}
+  .d svg{max-height:22cm !important;max-width:100% !important;width:auto !important;height:auto}
+  @page{size:A4;margin:15mm}
+  body{font-size:12pt}
+}
+</style></head><body><main>
+<div class="bar">
+  <label for="lang" data-t="langLbl">Bahasa</label>
+  <select id="lang">
+    <option value="id">Indonesia</option><option value="en">English</option>
+    <option value="es">Español</option><option value="fr">Français</option>
+    <option value="zh">中文</option><option value="ar">العربية</option>
+  </select>
+  <label for="theme" data-t="themeLbl">Tema</label>
+  <select id="theme">
+    <option value="light" data-t="light">Terang (hemat tinta)</option>
+    <option value="dark" data-t="dark">Gelap</option>
+    <option value="system" data-t="system">Ikuti sistem</option>
+  </select>
+  <button class="primary" id="print" data-t="print">Cetak / PDF</button>
+</div>
+<h1 data-t="title"></h1>
+<p class="sub" data-t="sub"></p>
+<div id="out"></div>
+</main>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+const AR_D = `flowchart TD
+  A(["البداية"]) --> B["مراجعة الأدبيات والدراسات السابقة<br/>[أكمل: قواعد البيانات]"]
+  B --> C["بناء اختبار المفردات<br/>وتحكيمه: الصدق والثبات"]
+  C --> D["اختيار العينة: مجموعتان<br/>تجريبية وضابطة [أكمل: العدد]"]
+  D --> E["الموافقة الأخلاقية<br/>وموافقة أولياء الأمور"]
+  E --> F["اختبار قبلي للمجموعتين"]
+  F --> G["التجريبية: تطبيقات الهاتف<br/>الضابطة: الطريقة المعتادة<br/>[أكمل: المدة]"]
+  G --> H["اختبار بعدي"]
+  H --> I{"هل تحققت افتراضات<br/>الاختبار الإحصائي؟"}
+  I -- نعم --> J["تحليل التباين المصاحب ANCOVA"]
+  I -- لا --> K["بديل لا معلمي<br/>[تحقق: الاختبار المناسب]"]
+  J --> L["مناقشة النتائج"]
+  K --> L
+  L --> M(["النهاية"])`;
+const EN_D = `flowchart TD
+  A([Start]) --> B["Literature review<br/>[FILL: databases]"]
+  B --> C["Build vocabulary test<br/>validity + reliability"]
+  C --> D["Sample: experimental and<br/>control groups [FILL: n]"]
+  D --> E["Ethics approval +<br/>parental consent"]
+  E --> F["Pre-test both groups"]
+  F --> G["Experimental: phone apps<br/>Control: usual teaching<br/>[FILL: duration]"]
+  G --> H["Post-test"]
+  H --> I{"Test assumptions<br/>met?"}
+  I -- Yes --> J["ANCOVA"]
+  I -- No --> K["Non-parametric alternative<br/>[VERIFY: which test]"]
+  J --> L["Discussion"]
+  K --> L
+  L --> M([End])`;
+const ID_D = EN_D.replace("Start","Mulai").replace("End","Selesai").replace("[FILL: databases]","[ISI: basis data]").replace("[FILL: n]","[ISI: n]").replace("[FILL: duration]","[ISI: durasi]").replace("[VERIFY: which test]","[CEK: uji yang tepat]");
+const T = {
+ ar:{langLbl:"اللغة",themeLbl:"المظهر",light:"فاتح (يوفّر الحبر)",dark:"داكن",system:"حسب النظام",print:"طباعة / PDF",
+  title:"مخطط انسيابي لمنهجية الدراسة",
+  sub:"أثر استخدام تطبيقات الهاتف الذكي في تعلّم مفردات اللغة العربية لدى طلاب المرحلة المتوسطة في جدة. تستخدم الطباعة الوضع الفاتح دائمًا.",
+  h:["الشكل 1. إجراءات الدراسة (الفصل الثالث)"],c:["الشكل 1. إجراءات الدراسة شبه التجريبية"],d:[AR_D]},
+ en:{langLbl:"Language",themeLbl:"Theme",light:"Light (saves ink)",dark:"Dark",system:"Follow system",print:"Print / PDF",
+  title:"Research method flowchart",sub:"Effect of smartphone apps on Arabic vocabulary learning, middle school, Jeddah. Printing always uses light mode.",
+  h:["Figure 1. Study procedure (Chapter 3)"],c:["Figure 1. Quasi-experimental procedure"],d:[EN_D]},
+ id:{langLbl:"Bahasa",themeLbl:"Tema",light:"Terang (hemat tinta)",dark:"Gelap",system:"Ikuti sistem",print:"Cetak / PDF",
+  title:"Bagan alir metode penelitian",sub:"Pengaruh aplikasi ponsel terhadap penguasaan kosakata bahasa Arab, SMP, Jeddah. Cetak selalu memakai mode terang.",
+  h:["Gambar 1. Prosedur penelitian (Bab III)"],c:["Gambar 1. Prosedur kuasi-eksperimen"],d:[ID_D]}
+};
+const ui = (o,base)=>Object.assign({},T[base],o);
+T.es = ui({langLbl:"Idioma",themeLbl:"Tema",light:"Claro (ahorra tinta)",dark:"Oscuro",system:"Según el sistema",print:"Imprimir / PDF",title:"Diagrama del método",h:["Figura 1. Procedimiento"],c:["Figura 1. Procedimiento cuasi-experimental"]},"en");
+T.fr = ui({langLbl:"Langue",themeLbl:"Thème",light:"Clair (économise l'encre)",dark:"Sombre",system:"Selon le système",print:"Imprimer / PDF",title:"Organigramme de la méthode",h:["Figure 1. Procédure"],c:["Figure 1. Procédure quasi-expérimentale"]},"en");
+T.zh = ui({langLbl:"语言",themeLbl:"主题",light:"浅色（省墨）",dark:"深色",system:"跟随系统",print:"打印 / PDF",title:"研究方法流程图",h:["图 1. 研究程序"],c:["图 1. 准实验程序"]},"en");
+
+const DEFAULT_LANG = "ar";   // <- set to the language the user wrote in
+const $ = s=>document.querySelector(s);
+const store = {get:k=>{try{return localStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}}};
+let lang = store.get("rk-lang") || DEFAULT_LANG; if(!T[lang]) lang = DEFAULT_LANG;
+let theme = store.get("rk-theme") || "light";
+let n = 0;
+
+async function svgFor(code,dark){
+  mermaid.initialize({startOnLoad:false,theme:dark?"dark":"default",securityLevel:"strict"});
+  try{ return fixBidi((await mermaid.render("m"+(n++),code)).svg); }
+  catch(e){ return `<pre class="err">Mermaid error — ${String(e.message||e).replace(/</g,"&lt;")}
+
+${code.replace(/</g,"&lt;")}</pre>`; }
+}
+// Mermaid lays labels out LTR. A label whose text contains RTL script gets its own RTL
+// paragraph direction, so paired brackets and trailing punctuation render on the right sides.
+const RTL = /[֐-ࣿיִ-﷿ﹰ-﻿]/;
+function fixBidi(svg){
+  const box=document.createElement("div"); box.innerHTML=svg;
+  box.querySelectorAll("foreignObject div, foreignObject span, foreignObject p").forEach(el=>{
+    if(RTL.test(el.textContent)) el.setAttribute("dir","rtl");
+  });
+  box.querySelectorAll("text").forEach(el=>{ // SVG-text labels (edge labels without htmlLabels)
+    if(RTL.test(el.textContent)){ el.setAttribute("direction","rtl"); el.setAttribute("unicode-bidi","embed"); }
+  });
+  return box.innerHTML;
+}
+async function render(){
+  const t=T[lang];
+  document.documentElement.lang=lang; document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  if(theme==="system") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme=theme;
+  document.querySelectorAll("[data-t]").forEach(e=>{const v=t[e.dataset.t]; if(typeof v==="string") e.textContent=v});
+  document.title=t.title;
+  let html="";
+  for(let i=0;i<t.d.length;i++){
+    // Both versions are rendered up front, so printing never waits for a re-render.
+    const light=await svgFor(t.d[i],false), dark=await svgFor(t.d[i],true);
+    html+=`<section><h2>${t.h[i]}</h2><figure><div class="d v-light" dir="ltr">${light}</div><div class="d v-dark" dir="ltr">${dark}</div><figcaption>${t.c[i]}</figcaption></figure></section>`;
+  }
+  $("#out").innerHTML=html;
+}
+$("#lang").value=lang; $("#theme").value=theme;
+$("#lang").onchange=e=>{lang=e.target.value;store.set("rk-lang",lang);render()};
+$("#theme").onchange=e=>{theme=e.target.value;store.set("rk-theme",theme);render()};
+$("#print").onclick=()=>print();
+render();
+</script></body></html>

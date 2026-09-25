@@ -1,0 +1,6 @@
+bimbingan 3 (12 agst)
+- bu dosen: fokus ke masalah stok, jgn melebar ke kasir/POS
+- RM mungkin: 1) bgmn rancang sistem catat stok bahan baku 2) apakah selisih stok berkurang stlh pakai sistem
+- metode: prototyping katanya ok
+- TODO: cari 3 jurnal pembanding, tanya owner soal data stok bulan lalu
+- pakai EOQ? bu dosen bilang "boleh tp harus ada sumbernya"

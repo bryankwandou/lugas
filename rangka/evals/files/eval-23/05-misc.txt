@@ -1,0 +1,3 @@
+belanja: sabun, indomie 2, galon
+ingat bayar kos tgl 1
+password wifi kampus ganti

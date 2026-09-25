@@ -1,0 +1,228 @@
+<!doctype html>
+<!--
+  Rangka — flowchart/diagram HTML template (assets/flowchart-template.html)
+  How to reuse:
+    1. Set DEFAULT_LANG below to the language the user wrote in ("id", "en", ...).
+    2. Replace T.id and T.en: title, sub, h (section headings), c (captions), d (Mermaid code).
+       Keep h, c, d the same length. Diagram text exists only for id and en;
+       es/fr/zh/ar translate the UI + headings/captions and show English diagram text.
+    3. Keep: theme default "light", the print CSS, the dual light/dark render, dir="rtl" for ar.
+  Everything the user must supply stays as [ISI: ...] / [FILL: ...] inside node text.
+  RTL diagram text (Arabic, Persian, Urdu, Hebrew): write it normally, brackets included
+  (e.g. [أكمل: العدد]). fixBidi() gives every label that contains RTL script dir="rtl"
+  after Mermaid renders; without it Mermaid's LTR layout puts the brackets on the wrong
+  sides. Do not remove fixBidi() or the matching CSS rule.
+-->
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bagan Skripsi Antrean</title>
+<style>
+:root{--bg:#faf8f4;--fg:#1f1d1a;--muted:#6b665e;--card:#fff;--line:#e4dfd6;--acc:#2f5d50}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161513;--fg:#eee9e1;--muted:#a39d93;--card:#1f1e1b;--line:#34312c;--acc:#8fc7b5}}
+:root[data-theme="dark"]{--bg:#161513;--fg:#eee9e1;--muted:#a39d93;--card:#1f1e1b;--line:#34312c;--acc:#8fc7b5}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:16px 16px 64px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:16px}
+.bar label{font-size:.85rem;color:var(--muted)}
+select,button{font:inherit;font-size:.9rem;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+button.primary{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+h1{font-size:1.5rem;margin:0 0 4px}p.sub{color:var(--muted);margin:0 0 24px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px;overflow-x:auto}
+h2{font-size:1.1rem;margin:0 0 12px}figure{margin:0}figcaption{text-align:center;color:var(--muted);font-size:.9rem;margin-top:8px}
+.d{display:flex;justify-content:center}
+.d foreignObject [dir="rtl"]{direction:rtl;unicode-bidi:isolate} /* set by fixBidi(): RTL node labels get an RTL paragraph, so [placeholder] brackets land on the correct sides */
+.v-dark{display:none}
+:root[data-theme="dark"] .v-light{display:none}
+:root[data-theme="dark"] .v-dark{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme]) .v-light{display:none}:root:not([data-theme]) .v-dark{display:block}}
+.err{white-space:pre-wrap;font:13px/1.4 ui-monospace,monospace;color:var(--muted)}
+@media print{
+  /* Always print light, whatever the screen theme (saves ink). !important beats the dark rules' specificity. */
+  :root{--bg:#fff !important;--fg:#000 !important;--muted:#333 !important;--card:#fff !important;--line:#999 !important}
+  html,body{background:#fff !important;color:#000 !important}
+  *{-webkit-print-color-adjust:economy;print-color-adjust:economy}
+  .bar{display:none !important}
+  .v-dark{display:none !important}.v-light{display:block !important}
+  section{overflow:visible !important;break-inside:avoid;border-color:#999;box-shadow:none}
+  .d svg{max-height:22cm !important;max-width:100% !important;width:auto !important;height:auto}
+  @page{size:A4;margin:15mm}
+  body{font-size:12pt}
+}
+</style></head><body><main>
+<div class="bar">
+  <label for="lang" data-t="langLbl">Bahasa</label>
+  <select id="lang">
+    <option value="id">Indonesia</option><option value="en">English</option>
+    <option value="es">Español</option><option value="fr">Français</option>
+    <option value="zh">中文</option><option value="ar">العربية</option>
+  </select>
+  <label for="theme" data-t="themeLbl">Tema</label>
+  <select id="theme">
+    <option value="light" data-t="light">Terang (hemat tinta)</option>
+    <option value="dark" data-t="dark">Gelap</option>
+    <option value="system" data-t="system">Ikuti sistem</option>
+  </select>
+  <button class="primary" id="print" data-t="print">Cetak / PDF</button>
+</div>
+<h1 data-t="title"></h1>
+<p class="sub" data-t="sub"></p>
+<div id="out"></div>
+</main>
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+const T = {
+ id:{langLbl:"Bahasa",themeLbl:"Tema",light:"Terang (hemat tinta)",dark:"Gelap",system:"Ikuti sistem",print:"Cetak / PDF",
+  title:"Bagan alir: Sistem Antrean Puskesmas + Notifikasi WhatsApp",
+  sub:"Contoh keluaran skill Rangka (topik diacak). Kerangka lengkapnya ada di kerangka-skripsi-antrean-puskesmas.md. Saat dicetak, halaman otomatis memakai mode terang.",
+  h:["Gambar 1. Kerangka Pikir (Bab I, 1.7)","Gambar 2. Alur Penelitian (Bab III, 3.5)","Gambar 3. Flowchart Sistem Antrean","Peta Bab I–V"],
+  c:["Gambar 1. Kerangka pikir penelitian","Gambar 2. Tahapan penelitian model Prototyping","Gambar 3. Alur kerja sistem yang dirancang","Setiap rumusan masalah dijawab dan ditutup"],
+  d:[
+`flowchart TD
+  A["Das Sollen:<br/>pasien dilayani tepat waktu"] --> C
+  B["Das Sein:<br/>antrean nomor kertas,<br/>waktu tunggu [ISI] menit"] --> C
+  C{"Gap:<br/>waktu tunggu panjang,<br/>posisi antrean tidak diketahui"} --> D
+  D["Teori: antrean FIFO,<br/>aplikasi web, WhatsApp API"] --> E
+  E["Metode: Prototyping,<br/>black box + UAT"] --> F
+  F["Luaran: sistem antrean web<br/>+ notifikasi WhatsApp"] --> G
+  G["Hasil terukur: waktu tunggu<br/>di lokasi turun"]`,
+`flowchart LR
+  S([Mulai]) --> K["Analisis kebutuhan<br/>wawancara + observasi"]
+  K --> R["Rancangan<br/>use case, ERD, UI"]
+  R --> P["Bangun prototipe"]
+  P --> V{"Evaluasi<br/>petugas setuju?"}
+  V -- Tidak --> R
+  V -- Ya --> T["Uji black box + UAT"]
+  T --> U["Ukur waktu tunggu<br/>sebelum vs sesudah"]
+  U --> A["Analisis & pembahasan"]
+  A --> E([Selesai])`,
+`flowchart TD
+  M([Pasien buka web]) --> D["Pilih poli & isi data"]
+  D --> N["Sistem beri nomor antrean"]
+  N --> W["Kirim WhatsApp:<br/>nomor + perkiraan waktu"]
+  W --> Q{"Sisa 3 antrean<br/>sebelum giliran?"}
+  Q -- Belum --> Q
+  Q -- Ya --> X["Kirim WhatsApp:<br/>segera datang"]
+  X --> H{"Pasien hadir<br/>saat dipanggil?"}
+  H -- Ya --> L["Dilayani petugas"]
+  H -- Tidak --> Y["Dilewati,<br/>dipanggil ulang 1x"]
+  L --> Z([Selesai])
+  Y --> Z`,
+`flowchart LR
+  I["BAB I<br/>RM1–RM3"] --> II["BAB II<br/>matriks + teori"]
+  II --> III["BAB III<br/>7 unsur metode"]
+  III --> IV["BAB IV<br/>4.1→RM1 · 4.2→RM2 · 4.3→RM3"]
+  IV --> V["BAB V<br/>3 kesimpulan · 3 saran"]
+  V -. menjawab .-> I`]},
+ en:{langLbl:"Language",themeLbl:"Theme",light:"Light (saves ink)",dark:"Dark",system:"Follow system",print:"Print / PDF",
+  title:"Flowcharts: Community Health Centre Queue System + WhatsApp Notifications",
+  sub:"Sample output of the Rangka skill (random topic). The full outline is in kerangka-skripsi-antrean-puskesmas.md. Printing always uses light mode.",
+  h:["Figure 1. Conceptual Framework (Ch. I, 1.7)","Figure 2. Research Flow (Ch. III, 3.5)","Figure 3. Queue System Flowchart","Chapter I–V Map"],
+  c:["Figure 1. Research conceptual framework","Figure 2. Prototyping research stages","Figure 3. Workflow of the proposed system","Every research question is answered and closed"],
+  d:[
+`flowchart TD
+  A["Ideal (Das Sollen):<br/>patients served on time"] --> C
+  B["Reality (Das Sein):<br/>paper ticket queue,<br/>wait [FILL] minutes"] --> C
+  C{"Gap:<br/>long waits,<br/>queue position unknown"} --> D
+  D["Theory: FIFO queueing,<br/>web apps, WhatsApp API"] --> E
+  E["Method: Prototyping,<br/>black box + UAT"] --> F
+  F["Output: web queue system<br/>+ WhatsApp notifications"] --> G
+  G["Measured result: on-site<br/>waiting time drops"]`,
+`flowchart LR
+  S([Start]) --> K["Requirements analysis<br/>interviews + observation"]
+  K --> R["Design<br/>use case, ERD, UI"]
+  R --> P["Build prototype"]
+  P --> V{"Evaluation<br/>staff approve?"}
+  V -- No --> R
+  V -- Yes --> T["Black box test + UAT"]
+  T --> U["Measure waiting time<br/>before vs after"]
+  U --> A["Analysis & discussion"]
+  A --> E([End])`,
+`flowchart TD
+  M([Patient opens web]) --> D["Choose clinic & enter data"]
+  D --> N["System issues queue number"]
+  N --> W["Send WhatsApp:<br/>number + estimated time"]
+  W --> Q{"3 patients<br/>before turn?"}
+  Q -- Not yet --> Q
+  Q -- Yes --> X["Send WhatsApp:<br/>come now"]
+  X --> H{"Patient present<br/>when called?"}
+  H -- Yes --> L["Served by staff"]
+  H -- No --> Y["Skipped,<br/>recalled once"]
+  L --> Z([End])
+  Y --> Z`,
+`flowchart LR
+  I["CH. I<br/>RQ1–RQ3"] --> II["CH. II<br/>matrix + theory"]
+  II --> III["CH. III<br/>7 method elements"]
+  III --> IV["CH. IV<br/>4.1→RQ1 · 4.2→RQ2 · 4.3→RQ3"]
+  IV --> V["CH. V<br/>3 conclusions · 3 suggestions"]
+  V -. answers .-> I`]}
+};
+// Other languages: translated UI and titles; diagram text falls back to English.
+const ui = (o,base)=>Object.assign({},T[base],o);
+T.es = ui({langLbl:"Idioma",themeLbl:"Tema",light:"Claro (ahorra tinta)",dark:"Oscuro",system:"Según el sistema",print:"Imprimir / PDF",
+  title:"Diagramas: sistema de turnos del centro de salud + avisos por WhatsApp",
+  sub:"Ejemplo de salida de Rangka (tema aleatorio). Al imprimir se usa siempre el modo claro. Texto de los diagramas en inglés.",
+  h:["Figura 1. Marco conceptual","Figura 2. Flujo de investigación","Figura 3. Diagrama del sistema de turnos","Mapa de capítulos I–V"],
+  c:["Figura 1. Marco conceptual","Figura 2. Etapas de prototipado","Figura 3. Flujo del sistema propuesto","Cada pregunta se responde y se cierra"]},"en");
+T.fr = ui({langLbl:"Langue",themeLbl:"Thème",light:"Clair (économise l'encre)",dark:"Sombre",system:"Selon le système",print:"Imprimer / PDF",
+  title:"Diagrammes : file d'attente du centre de santé + notifications WhatsApp",
+  sub:"Exemple de sortie de Rangka (sujet aléatoire). L'impression utilise toujours le mode clair. Texte des diagrammes en anglais.",
+  h:["Figure 1. Cadre conceptuel","Figure 2. Déroulement de la recherche","Figure 3. Organigramme du système","Carte des chapitres I–V"],
+  c:["Figure 1. Cadre conceptuel","Figure 2. Étapes du prototypage","Figure 3. Fonctionnement du système proposé","Chaque question est traitée et conclue"]},"en");
+T.zh = ui({langLbl:"语言",themeLbl:"主题",light:"浅色（省墨）",dark:"深色",system:"跟随系统",print:"打印 / PDF",
+  title:"流程图：社区卫生中心排队系统 + WhatsApp 通知",
+  sub:"Rangka 输出示例（随机题目）。打印时始终使用浅色模式。图中文字为英文。",
+  h:["图 1. 概念框架","图 2. 研究流程","图 3. 排队系统流程图","第 I–V 章结构图"],
+  c:["图 1. 研究概念框架","图 2. 原型法研究阶段","图 3. 所设计系统的工作流程","每个研究问题都得到回答"]},"en");
+T.ar = ui({langLbl:"اللغة",themeLbl:"المظهر",light:"فاتح (يوفّر الحبر)",dark:"داكن",system:"حسب النظام",print:"طباعة / PDF",
+  title:"مخططات: نظام طابور المركز الصحي مع إشعارات واتساب",
+  sub:"مثال على مخرجات Rangka (موضوع عشوائي). تستخدم الطباعة الوضع الفاتح دائمًا. نص المخططات بالإنجليزية.",
+  h:["الشكل 1. الإطار المفاهيمي","الشكل 2. مسار البحث","الشكل 3. مخطط نظام الطابور","خريطة الفصول I–V"],
+  c:["الشكل 1. الإطار المفاهيمي","الشكل 2. مراحل النمذجة الأولية","الشكل 3. سير عمل النظام","كل سؤال بحثي تمت الإجابة عنه"]},"en");
+
+const DEFAULT_LANG = "id";   // <- set to the language the user wrote in
+const $ = s=>document.querySelector(s);
+const store = {get:k=>{try{return localStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}}};
+let lang = store.get("rk-lang") || DEFAULT_LANG; if(!T[lang]) lang = DEFAULT_LANG;
+let theme = store.get("rk-theme") || "light";
+let n = 0;
+
+async function svgFor(code,dark){
+  mermaid.initialize({startOnLoad:false,theme:dark?"dark":"default",securityLevel:"strict"});
+  try{ return fixBidi((await mermaid.render("m"+(n++),code)).svg); }
+  catch(e){ return `<pre class="err">Mermaid error — ${String(e.message||e).replace(/</g,"&lt;")}
+
+${code.replace(/</g,"&lt;")}</pre>`; }
+}
+// Mermaid lays labels out LTR. A label whose text contains RTL script gets its own RTL
+// paragraph direction, so paired brackets and trailing punctuation render on the right sides.
+const RTL = /[֐-ࣿיִ-﷿ﹰ-﻿]/;
+function fixBidi(svg){
+  const box=document.createElement("div"); box.innerHTML=svg;
+  box.querySelectorAll("foreignObject div, foreignObject span, foreignObject p").forEach(el=>{
+    if(RTL.test(el.textContent)) el.setAttribute("dir","rtl");
+  });
+  box.querySelectorAll("text").forEach(el=>{ // SVG-text labels (edge labels without htmlLabels)
+    if(RTL.test(el.textContent)){ el.setAttribute("direction","rtl"); el.setAttribute("unicode-bidi","embed"); }
+  });
+  return box.innerHTML;
+}
+async function render(){
+  const t=T[lang];
+  document.documentElement.lang=lang; document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  if(theme==="system") delete document.documentElement.dataset.theme; else document.documentElement.dataset.theme=theme;
+  document.querySelectorAll("[data-t]").forEach(e=>{const v=t[e.dataset.t]; if(typeof v==="string") e.textContent=v});
+  document.title=t.title;
+  let html="";
+  for(let i=0;i<t.d.length;i++){
+    // Both versions are rendered up front, so printing never waits for a re-render.
+    const light=await svgFor(t.d[i],false), dark=await svgFor(t.d[i],true);
+    html+=`<section><h2>${t.h[i]}</h2><figure><div class="d v-light" dir="ltr">${light}</div><div class="d v-dark" dir="ltr">${dark}</div><figcaption>${t.c[i]}</figcaption></figure></section>`;
+  }
+  $("#out").innerHTML=html;
+}
+$("#lang").value=lang; $("#theme").value=theme;
+$("#lang").onchange=e=>{lang=e.target.value;store.set("rk-lang",lang);render()};
+$("#theme").onchange=e=>{theme=e.target.value;store.set("rk-theme",theme);render()};
+$("#print").onclick=()=>print();
+render();
+</script></body></html>

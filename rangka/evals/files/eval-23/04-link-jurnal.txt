@@ -1,0 +1,4 @@
+jurnal buat dibaca:
+- "Sistem Informasi Persediaan Barang Berbasis Web" (jurnal ilkom? lupa tahun)
+- "Penerapan EOQ pada UMKM" (belum baca)
+- artikel ttg notifikasi stok minimum android

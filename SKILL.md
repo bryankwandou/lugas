@@ -131,14 +131,17 @@ The point is to stop the 10-retry loop. So:
 | `references/literature-read.md` | Six papers checked against the full text (Sept 2026), with the rule each supports |
 | `references/literature-2.md` | 385 further sources (arXiv, 2022–2026): narrative, creativity, detection, evasion, stylometry, academic writing, non-English, co-writing — screened by abstract, read the paper before leaning on one |
 
-## Kampus: Atma Jaya Makassar and other universities
+## Bundled guides: rangka, atmajaya, pedoman
 
-Lugas carries two campus guides in `kampus/`. Each has a `GUIDE.md` (read it first)
-and its own `references/`; paths inside a guide are relative to that guide's folder.
-Where a guide says "the `pedoman` skill", read the sibling folder here instead. Order of work: **outline (atmajaya) → prose (this file) → format (pedoman)**.
+Installing lugas installs all four skills. The other three live in `rangka/`,
+`kampus/atmajaya/` and `kampus/pedoman/`. Each has a `GUIDE.md` (read it first) and
+its own `references/`; paths inside a guide are relative to that guide's folder.
+Where a guide says "the `rangka` / `pedoman` / `lugas` skill", read the folder here
+instead. Order of work: **outline (rangka or atmajaya) → prose (this file) → format (pedoman)**.
 
 | Need | Read |
 |---|---|
+| Outline (kerangka) before drafting, or condense research files into one outline: skripsi, tesis, proposal, KKP, makalah, proposal kegiatan, LPJ, SK, AD/ART, surat, laporan, landing page, README, spec, video script, pitch deck, brosur, email, study mind map — 22 Indonesian campuses plus foreign norms | `rangka/GUIDE.md` |
 | UAJM student: KKP/magang, proposal TA, Ringkasan Kapasitas Diri, skripsi, naskah jurnal, seminar, sidang — the whole route with outlines and checks | `kampus/atmajaya/GUIDE.md` |
 | Format compliance against a guideline: margins, fonts, cover, numbering, citation style, eligibility gates — UAJM FTI plus UAJY, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB, ITS, Unair, Unhas, UNS, Unpad, Undip, and five foreign institutions | `kampus/pedoman/GUIDE.md` |
 
