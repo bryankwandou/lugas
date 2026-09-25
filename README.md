@@ -45,7 +45,7 @@ examples/                    before/after pairs
 references/storyscope.md     StoryScope (arXiv:2604.03136) encoded in full
 references/literature*.md    515 sources; literature-read.md = checked in full
 kampus/atmajaya/             UAJM: KKP, proposal, skripsi, sidang (Informatika 2015)
-kampus/pedoman/              format checks: 14 Indonesian + 5 foreign institutions
+kampus/pedoman/              format checks: 22 Indonesian + 5 foreign institutions
 evals/                       real-use test runs
 ```
 

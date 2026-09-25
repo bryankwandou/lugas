@@ -63,6 +63,14 @@ separate pass.
 | UAJM Informatika, any document | `references/uajm-fti.md` |
 | UAJY (Atma Jaya **Yogyakarta**) Teknik Informatika | `references/uajy-fti.md` — not UAJM |
 | Unika Atma Jaya **Jakarta**, FEB skripsi (2025) | `references/atmajaya-jakarta-feb.md` — not UAJM; comparison only for UAJM Manajemen/Akuntansi |
+| Unhas S1, semua fakultas (SK Rektor 2023) | `references/unhas-s1.md` |
+| UNM, semua fakultas (2019) | `references/unm-s1.md` |
+| UMI — hanya FIKOM (2021) | `references/umi-s1.md` |
+| UIN Alauddin, semua fakultas (2023) | `references/uin-alauddin-s1.md` |
+| Unismuh — hanya FKIP (2021) | `references/unismuh-s1.md` |
+| PNUP — hanya skripsi D-4 (2016) | `references/pnup.md` |
+| UGM S1 — hanya FIB (2020) | `references/ugm-s1.md` |
+| BINUS — hanya S1 Management | `references/binus-s1.md` |
 | ITB, S2/S3 (SPs ITB) | `references/itb-sps.md` |
 | UI, any level (skripsi/tesis/disertasi) | `references/ui.md` |
 | IPB, any level (PPKI edisi 4, 2019) | `references/ipb.md` |
@@ -125,7 +133,7 @@ guideline does not cover. Then stop.
 ## Scope, in order of confidence
 
 1. **UAJM FTI** — encoded clause by clause from the primary PDFs. High confidence.
-2. **Thirteen more Indonesian campuses** — UAJY Informatika, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
+2. **Twenty-one more Indonesian campuses** — Unhas S1, UNM, UMI FIKOM, UIN Alauddin, Unismuh FKIP, PNUP D-4, UGM FIB, BINUS Management, UAJY Informatika, Atma Jaya Jakarta FEB, ITB, UI, IPB, UGM Faperta, UB PPS, ITS, Unair, Unhas, UNS, Unpad (tesis full; disertasi content only), Undip (three programmes),
    each encoded from its own primary PDF with source table and clause numbers. High
    confidence for the edition stated; editions differ in age (2014–2023), so say which.
 3. **Indonesian universities generally** — shared conventions, the axes on which
