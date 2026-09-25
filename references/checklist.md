@@ -6,6 +6,12 @@ Run before delivering. Silent. Fix, don't report.
 
 - [ ] A fact, number, name, date, or citation from the input is missing or changed (rewrite mode).
 - [ ] A fact, number, quote, testimonial, or reference appears that was not in the input or common knowledge.
+- [ ] Rewrite mode: a sentence cannot be traced to a sentence in the input. No new claims,
+      inferences, apologies, open questions, or "who decides / by when" lines, even without
+      numbers. Test each output sentence: which input sentence says this? None → delete it.
+- [ ] Rewrite mode: a substantive claim, problem statement, or cause→effect link from the input
+      is gone. Cut only padding (throat-clearing, recaps, hype). An unsupported quality claim
+      from the author ("aman, tahan lama") stays, stated plainly — flag it, don't delete it.
 - [ ] Opening sentence is throat-clearing (§1 of the pattern file).
 - [ ] Any emoji, unless the user's brand voice uses them.
 - [ ] Output starts with a preamble ("Berikut hasil parafrase ...", "Here's the rewritten version:").
